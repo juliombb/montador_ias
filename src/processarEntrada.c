@@ -22,6 +22,12 @@ const char* get_error_string (enum errors code) {
 */
 int processarEntrada(char* entrada, unsigned tamanho)
 {
+    char *tokenAtual = (char*) malloc(20* sizeof(char));
+
+    while (sscanf(entrada, "%s", tokenAtual)) {
+
+
+    }
     /* printf("Você deve implementar esta função para a Parte 1.\n"); */
     return 0;
 }
