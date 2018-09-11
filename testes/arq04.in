@@ -1,0 +1,4 @@
+.wfill 50 varFill
+org 0x100
+
+100varfill:   #Lexical Error
