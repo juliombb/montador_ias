@@ -2,6 +2,8 @@
 // Created by Julio Moreira B. Barros on 9/11/18.
 //
 
+#include <memory.h>
+
 int eHexadecimal(char* palavra) {
     if (strlen(palavra) <= 2) {
         return 0;

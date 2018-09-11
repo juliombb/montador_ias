@@ -1,0 +1,3 @@
+/Users/julio.barros/montador_ias/cmake-build-debug/CMakeFiles/rebuild_cache.dir
+/Users/julio.barros/montador_ias/cmake-build-debug/CMakeFiles/edit_cache.dir
+/Users/julio.barros/montador_ias/cmake-build-debug/CMakeFiles/montador_ias.dir

@@ -1,5 +1,6 @@
 #include "montador.h"
 #include <stdio.h>
+#include <stdlib.h>
 
 /*
 Exemplo de erros:

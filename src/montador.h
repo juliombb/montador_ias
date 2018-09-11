@@ -26,9 +26,9 @@ enum errors
     int eDiretiva(char* palavra)
 */
 // aux
-int eHexadecimal(char* palavra)
-int eDiretiva(char* palavra)
-int eRotulo(char* palavre)
+int eHexadecimal(char* palavra);
+int eDiretiva(char* palavra);
+int eRotulo(char* palavre);
 
 int processarEntrada(char*, unsigned);
 int emitirMapaDeMemoria();
