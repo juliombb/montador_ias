@@ -69,6 +69,23 @@ int eDiretiva(char* palavra) {
     return 0;
 }
 
+int eInstrucao(char* palavra) {
+    char *maiuscula = paraMaiuscula(palavra);
+
+    if (strcmp(maiuscula, "LOAD") == 0) { return 1; }
+    if (strcmp(maiuscula, "STOR") == 0) { return 1; }
+    if (strcmp(maiuscula, "JUMP") == 0) { return 1; }
+    if (strcmp(maiuscula, "ADD") == 0) { return 1; }
+    if (strcmp(maiuscula, "SUB") == 0) { return 1; }
+    if (strcmp(maiuscula, "MUL") == 0) { return 1; }
+    if (strcmp(maiuscula, "DIV") == 0) { return 1; }
+    if (strcmp(maiuscula, "LSH") == 0) { return 1; }
+    if (strcmp(maiuscula, "RSH") == 0) { return 1; }
+
+    // desconhecida
+    return 0;
+}
+
 int eRotulo(char* palavra) {
     size_t len = strlen(palavra);
     if (len < 2) {

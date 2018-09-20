@@ -23,12 +23,35 @@ const char* get_error_string (enum errors code) {
 */
 int processarEntrada(char* entrada, unsigned tamanho)
 {
-    char *tokenAtual = (char*) malloc(20* sizeof(char));
+    char *sLida = (char*) malloc((tamanho+1)* sizeof(char)); // precaução o nome
+    char *sAtual = entrada;
+    int offset = 0;
 
-    while (sscanf(entrada, "%s", tokenAtual)) {
+    while (sscanf(sAtual, "%2000[^\n] %n", sLida, &offset) != EOF) {
+        char *tokenAtual = (char*) malloc(100* sizeof(char));
+        int innerOffset = 0;
+        char *innerSLida = sLida;
+        while (sscanf(innerSLida, "%s%n", tokenAtual, &innerOffset) != EOF) {
+            innerSLida += innerOffset;
+            // tokenAtual é o token atual. TODO: Tratar ele aqui.
+            if (eDiretiva(tokenAtual)) {
+
+            } else if (eRotulo(tokenAtual)) {
+
+            } else if (eInstrucao(tokenAtual)) {
+
+            } else {
+                return 0;
+            }
 
 
+        } // aqui eh o fim da linha
+        free(tokenAtual);
+        sAtual += offset;
     }
+
+    free(sLida);
+    free(sAtual);
     /* printf("Você deve implementar esta função para a Parte 1.\n"); */
     return 0;
 }

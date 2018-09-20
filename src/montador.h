@@ -28,7 +28,8 @@ enum errors
 // aux
 int eHexadecimal(char* palavra);
 int eDiretiva(char* palavra);
-int eRotulo(char* palavre);
+int eRotulo(char* palavra);
+int eInstrucao(char* palavre);
 
 int processarEntrada(char*, unsigned);
 int emitirMapaDeMemoria();

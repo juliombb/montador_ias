@@ -1,5 +1,7 @@
 #include "montador.h"
 #include <stdio.h>
+#include <stdlib.h>
+#include <memory.h>
 
 /* Retorna:
  *  1 caso haja erro na montagem;
