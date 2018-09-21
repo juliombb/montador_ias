@@ -1,6 +1,7 @@
 #include "montador.h"
 #include <stdio.h>
 #include <stdlib.h>
+#include <memory.h>
 
 /*
 Exemplo de erros:
@@ -35,6 +36,14 @@ int processarEntrada(char* entrada, unsigned tamanho)
             innerSLida += innerOffset;
             // tokenAtual é o token atual. TODO: Tratar ele aqui.
             if (eDiretiva(tokenAtual)) {
+
+                char *maiuscula = paraMaiuscula(tokenAtual);
+
+                if (strcmp(maiuscula, ".SET") == 0) { return 1; }
+                if (strcmp(maiuscula, ".ORG") == 0) { return 1; }
+                if (strcmp(maiuscula, ".ALIGN") == 0) { return 1; }
+                if (strcmp(maiuscula, ".WFILL") == 0) { return 1; }
+                if (strcmp(maiuscula, ".WORD") == 0) { return 1; }
 
             } else if (eRotulo(tokenAtual)) {
 

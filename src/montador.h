@@ -26,6 +26,7 @@ enum errors
     int eDiretiva(char* palavra)
 */
 // aux
+char* paraMaiuscula(char* palavra);
 int eHexadecimal(char* palavra);
 int eDiretiva(char* palavra);
 int eRotulo(char* palavra);
