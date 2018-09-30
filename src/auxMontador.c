@@ -6,6 +6,29 @@
 #include <stdlib.h>
 #include <stdio.h>
 
+#define MAXINT 1099511627775 // 2^40 -1
+#define MININT -1099511627776 // -2^40
+
+int verificarPalavraValida(const char *palavra, size_t len) {
+    if (palavra[0] >= 48 && palavra[0] <= 57) {
+        // numero no inicio
+        return 0;
+    }
+
+    for (int i = 0; i < len; ++i) {
+
+        if (palavra[0] >= 48 && palavra[0] <= 57) { continue; }
+        if (palavra[0] >= 65 && palavra[0] <= 90) { continue; }
+        if (palavra[0] >= 97 && palavra[0] <= 122) { continue; }
+        if (palavra[0] == 95) { continue; }
+
+        // caracter invalido
+        return 0;
+    }
+
+    return 1;
+}
+
 char * paraMaiuscula(const char *palavra) {
     size_t len = strlen(palavra);
     char *maiuscula = (char *) malloc(len* sizeof(char));
@@ -30,12 +53,10 @@ int eHexadecimal(char* palavra) {
 
     if (palavra[0] == '0' && palavra[1] == 'x') {
 
-        long numeroParseado;
         char* ptrErro;
+        strtol(palavra, &ptrErro, 16);
 
-        numeroParseado = strtol(palavra, &ptrErro, 16);
-
-        if (ptrErro != (palavra + strlen(palavra))) {
+        if (ptrErro != (palavra + len)) {
             return 0;
         }
 
@@ -43,6 +64,23 @@ int eHexadecimal(char* palavra) {
     }
 
     return 0;
+}
+
+int eDecimal(char* palavra) {
+    char* ptrErro;
+
+    long numeroParseado = strtol(palavra, &ptrErro, 10);
+
+    if (numeroParseado > MAXINT || numeroParseado < MININT) {
+        fprintf(stderr, "Overflow decimal.");
+        return 0;
+    }
+
+    if (ptrErro != (palavra + strlen(palavra))) {
+        return 0;
+    }
+
+    return 1;
 }
 
 int eDiretiva(char* palavra) {
@@ -69,18 +107,34 @@ int eDiretiva(char* palavra) {
     return 0;
 }
 
+int eNome(char* palavra) {
+    return verificarPalavraValida(palavra, strlen(palavra));
+}
+
 int eInstrucao(char* palavra) {
     char *maiuscula = paraMaiuscula(palavra);
 
-    if (strcmp(maiuscula, "LOAD") == 0) { return 1; }
-    if (strcmp(maiuscula, "STOR") == 0) { return 1; }
+    if (strcmp(maiuscula, "LD") == 0) { return 1; }
+    if (strcmp(maiuscula, "LDINV") == 0) { return 1; }
+    if (strcmp(maiuscula, "LDABS") == 0) { return 1; }
+    if (strcmp(maiuscula, "LDMQ") == 0) { return 1; }
+    if (strcmp(maiuscula, "LDMQMX") == 0) { return 1; }
+    if (strcmp(maiuscula, "STORE") == 0) { return 1; }
     if (strcmp(maiuscula, "JUMP") == 0) { return 1; }
+    if (strcmp(maiuscula, "HEX") == 0) { return 1; }
+    if (strcmp(maiuscula, "JUMPL") == 0) { return 1; }
+    if (strcmp(maiuscula, "JUMPR") == 0) { return 1; }
+    if (strcmp(maiuscula, "HEX") == 0) { return 1; }
     if (strcmp(maiuscula, "ADD") == 0) { return 1; }
+    if (strcmp(maiuscula, "ADDABS") == 0) { return 1; }
     if (strcmp(maiuscula, "SUB") == 0) { return 1; }
-    if (strcmp(maiuscula, "MUL") == 0) { return 1; }
+    if (strcmp(maiuscula, "SUBABS") == 0) { return 1; }
+    if (strcmp(maiuscula, "MULT") == 0) { return 1; }
     if (strcmp(maiuscula, "DIV") == 0) { return 1; }
     if (strcmp(maiuscula, "LSH") == 0) { return 1; }
     if (strcmp(maiuscula, "RSH") == 0) { return 1; }
+    if (strcmp(maiuscula, "STORAL") == 0) { return 1; }
+    if (strcmp(maiuscula, "STORAR") == 0) { return 1; }
 
     // desconhecida
     return 0;
@@ -98,20 +152,5 @@ int eRotulo(char* palavra) {
         return 0;
     }
 
-    if (palavra[0] >= 48 && palavra[0] <= 57) {
-        // numero no inicio
-        return 0;
-    }
-
-    for (int i = 0; i < len - 1; ++i) {
-
-        if (palavra[0] >= 48 && palavra[0] <= 57) { continue; }
-        if (palavra[0] >= 65 && palavra[0] <= 90) { continue; }
-        if (palavra[0] >= 97 && palavra[0] <= 122) { continue; }
-
-        // caracter invalido
-        return 0;
-    }
-
-    return 1;
+    return verificarPalavraValida(palavra, len - 1);
 }

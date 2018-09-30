@@ -24,43 +24,61 @@ const char* get_error_string (enum errors code) {
 */
 int processarEntrada(char* entrada, unsigned tamanho)
 {
-    char *sLida = (char*) malloc((tamanho+1)* sizeof(char)); // precaução o nome
-    char *sAtual = entrada;
-    int offset = 0;
+    char *linhaLida = (char*) malloc((tamanho+1)* sizeof(char)); // precaução o nome
+    char *entradaPosicionada = entrada;
+    unsigned offset = 0;
+    unsigned linhaAtual = 1;
 
-    while (sscanf(sAtual, "%2000[^\n] %n", sLida, &offset) != EOF) {
+    while (sscanf(entradaPosicionada, "%2000[^\n] %n", linhaLida, &offset) != EOF) {
+
         char *tokenAtual = (char*) malloc(100* sizeof(char));
-        int innerOffset = 0;
-        char *innerSLida = sLida;
-        while (sscanf(innerSLida, "%s%n", tokenAtual, &innerOffset) != EOF) {
-            innerSLida += innerOffset;
-            // tokenAtual é o token atual. TODO: Tratar ele aqui.
-            if (eDiretiva(tokenAtual)) {
+        char *innerLinhaLida = linhaLida;
+        unsigned innerOffset = 0;
 
-                char *maiuscula = paraMaiuscula(tokenAtual);
-
-                if (strcmp(maiuscula, ".SET") == 0) { return 1; }
-                if (strcmp(maiuscula, ".ORG") == 0) { return 1; }
-                if (strcmp(maiuscula, ".ALIGN") == 0) { return 1; }
-                if (strcmp(maiuscula, ".WFILL") == 0) { return 1; }
-                if (strcmp(maiuscula, ".WORD") == 0) { return 1; }
-
-            } else if (eRotulo(tokenAtual)) {
-
-            } else if (eInstrucao(tokenAtual)) {
-
-            } else {
-                return 0;
+        while (sscanf(innerLinhaLida, "%s%n", tokenAtual, &innerOffset) != EOF) {
+            innerLinhaLida += innerOffset;
+            if (tokenAtual[0] == '#') {
+                // comentario, acabou a linha
+                break;
             }
 
+            char *maiuscula = paraMaiuscula(tokenAtual);
+
+            Token t;
+            t.linha = linhaAtual;
+            t.palavra = strcat(maiuscula, " ");
+
+            if (eDiretiva(tokenAtual)) { t.tipo = Diretiva; }
+            else if (eRotulo(tokenAtual)) { t.tipo = DefRotulo; }
+            else if (eInstrucao(tokenAtual)) { t.tipo = Instrucao; }
+            else {
+                if (recuperaToken(getNumberOfTokens() - 1).linha != linhaAtual
+                    || recuperaToken(getNumberOfTokens() - 1).tipo == DefRotulo) {
+                    // Nesse caso, teriamos algo que nao eh instrucao nem diretiva nem rotulo no inicio ou após um rótulo.
+
+                    // Parametro onde nao deveria (talvez isso não deva ser feito pra números)
+                    fprintf(stderr, "ERRO LEXICO: palavra inválida na linha %d!", linhaAtual);
+                    return 0;
+                }
+                else if (eHexadecimal(tokenAtual)) { t.tipo = Hexadecimal; }
+                else if (eDecimal(tokenAtual)) { t.tipo = Decimal; }
+                else if (eNome(tokenAtual)) { t.tipo = Nome; }
+                else {
+                    fprintf(stderr, "ERRO LEXICO: palavra inválida na linha %d!", linhaAtual);
+                    return 0;
+                }
+            }
+
+            adicionarToken(t);
 
         } // aqui eh o fim da linha
         free(tokenAtual);
-        sAtual += offset;
+        entradaPosicionada += offset;
+        linhaAtual++;
     }
 
-    free(sLida);
-    free(sAtual);
+    free(linhaLida);
+    free(entradaPosicionada);
     /* printf("Você deve implementar esta função para a Parte 1.\n"); */
     return 0;
 }
