@@ -4,9 +4,11 @@ set(CMAKE_DEPENDS_LANGUAGES
   )
 # The set of files for implicit dependencies of each language:
 set(CMAKE_DEPENDS_CHECK_C
+  "/Users/julio.barros/montador_ias/aux/main1.c" "/Users/julio.barros/montador_ias/cmake-build-debug/CMakeFiles/montador_ias.dir/aux/main1.c.o"
+  "/Users/julio.barros/montador_ias/aux/main2.c" "/Users/julio.barros/montador_ias/cmake-build-debug/CMakeFiles/montador_ias.dir/aux/main2.c.o"
   "/Users/julio.barros/montador_ias/src/auxMontador.c" "/Users/julio.barros/montador_ias/cmake-build-debug/CMakeFiles/montador_ias.dir/src/auxMontador.c.o"
   "/Users/julio.barros/montador_ias/src/emitirMapaDeMemoria.c" "/Users/julio.barros/montador_ias/cmake-build-debug/CMakeFiles/montador_ias.dir/src/emitirMapaDeMemoria.c.o"
-  "/Users/julio.barros/montador_ias/src/main.c" "/Users/julio.barros/montador_ias/cmake-build-debug/CMakeFiles/montador_ias.dir/src/main.c.o"
+  "/Users/julio.barros/montador_ias/src/main1.c" "/Users/julio.barros/montador_ias/cmake-build-debug/CMakeFiles/montador_ias.dir/src/main1.c.o"
   "/Users/julio.barros/montador_ias/src/processarEntrada.c" "/Users/julio.barros/montador_ias/cmake-build-debug/CMakeFiles/montador_ias.dir/src/processarEntrada.c.o"
   "/Users/julio.barros/montador_ias/src/token.c" "/Users/julio.barros/montador_ias/cmake-build-debug/CMakeFiles/montador_ias.dir/src/token.c.o"
   )
@@ -15,6 +17,7 @@ set(CMAKE_C_COMPILER_ID "AppleClang")
 # The include file search paths:
 set(CMAKE_C_TARGET_INCLUDE_PATH
   "../src"
+  "../aux"
   )
 
 # Targets to which this target links.

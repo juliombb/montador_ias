@@ -6,5 +6,5 @@ C_FLAGS = -g   -std=gnu11
 
 C_DEFINES = 
 
-C_INCLUDES = -I/Users/julio.barros/montador_ias/src 
+C_INCLUDES = -I/Users/julio.barros/montador_ias/src -I/Users/julio.barros/montador_ias/aux 
 

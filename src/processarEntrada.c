@@ -24,7 +24,7 @@ const char* get_error_string (enum errors code) {
 */
 int processarEntrada(char* entrada, unsigned tamanho)
 {
-    char *linhaLida = (char*) malloc((tamanho+1)* sizeof(char)); // precaução o nome
+    char *linhaLida = (char*) malloc((tamanho+1)* sizeof(char)); // precaução, o nome
     char *entradaPosicionada = entrada;
     unsigned offset = 0;
     unsigned linhaAtual = 1;

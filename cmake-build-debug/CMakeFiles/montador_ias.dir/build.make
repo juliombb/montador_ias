@@ -83,22 +83,48 @@ CMakeFiles/montador_ias.dir/src/emitirMapaDeMemoria.c.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling C source to assembly CMakeFiles/montador_ias.dir/src/emitirMapaDeMemoria.c.s"
 	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S /Users/julio.barros/montador_ias/src/emitirMapaDeMemoria.c -o CMakeFiles/montador_ias.dir/src/emitirMapaDeMemoria.c.s
 
-CMakeFiles/montador_ias.dir/src/main.c.o: CMakeFiles/montador_ias.dir/flags.make
-CMakeFiles/montador_ias.dir/src/main.c.o: ../src/main.c
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/Users/julio.barros/montador_ias/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_3) "Building C object CMakeFiles/montador_ias.dir/src/main.c.o"
-	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -o CMakeFiles/montador_ias.dir/src/main.c.o   -c /Users/julio.barros/montador_ias/src/main.c
+CMakeFiles/montador_ias.dir/src/main1.c.o: CMakeFiles/montador_ias.dir/flags.make
+CMakeFiles/montador_ias.dir/src/main1.c.o: ../src/main1.c
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/Users/julio.barros/montador_ias/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_3) "Building C object CMakeFiles/montador_ias.dir/src/main1.c.o"
+	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -o CMakeFiles/montador_ias.dir/src/main1.c.o   -c /Users/julio.barros/montador_ias/src/main1.c
 
-CMakeFiles/montador_ias.dir/src/main.c.i: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing C source to CMakeFiles/montador_ias.dir/src/main.c.i"
-	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E /Users/julio.barros/montador_ias/src/main.c > CMakeFiles/montador_ias.dir/src/main.c.i
+CMakeFiles/montador_ias.dir/src/main1.c.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing C source to CMakeFiles/montador_ias.dir/src/main1.c.i"
+	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E /Users/julio.barros/montador_ias/src/main1.c > CMakeFiles/montador_ias.dir/src/main1.c.i
 
-CMakeFiles/montador_ias.dir/src/main.c.s: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling C source to assembly CMakeFiles/montador_ias.dir/src/main.c.s"
-	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S /Users/julio.barros/montador_ias/src/main.c -o CMakeFiles/montador_ias.dir/src/main.c.s
+CMakeFiles/montador_ias.dir/src/main1.c.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling C source to assembly CMakeFiles/montador_ias.dir/src/main1.c.s"
+	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S /Users/julio.barros/montador_ias/src/main1.c -o CMakeFiles/montador_ias.dir/src/main1.c.s
+
+CMakeFiles/montador_ias.dir/aux/main1.c.o: CMakeFiles/montador_ias.dir/flags.make
+CMakeFiles/montador_ias.dir/aux/main1.c.o: ../aux/main1.c
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/Users/julio.barros/montador_ias/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_4) "Building C object CMakeFiles/montador_ias.dir/aux/main1.c.o"
+	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -o CMakeFiles/montador_ias.dir/aux/main1.c.o   -c /Users/julio.barros/montador_ias/aux/main1.c
+
+CMakeFiles/montador_ias.dir/aux/main1.c.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing C source to CMakeFiles/montador_ias.dir/aux/main1.c.i"
+	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E /Users/julio.barros/montador_ias/aux/main1.c > CMakeFiles/montador_ias.dir/aux/main1.c.i
+
+CMakeFiles/montador_ias.dir/aux/main1.c.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling C source to assembly CMakeFiles/montador_ias.dir/aux/main1.c.s"
+	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S /Users/julio.barros/montador_ias/aux/main1.c -o CMakeFiles/montador_ias.dir/aux/main1.c.s
+
+CMakeFiles/montador_ias.dir/aux/main2.c.o: CMakeFiles/montador_ias.dir/flags.make
+CMakeFiles/montador_ias.dir/aux/main2.c.o: ../aux/main2.c
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/Users/julio.barros/montador_ias/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_5) "Building C object CMakeFiles/montador_ias.dir/aux/main2.c.o"
+	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -o CMakeFiles/montador_ias.dir/aux/main2.c.o   -c /Users/julio.barros/montador_ias/aux/main2.c
+
+CMakeFiles/montador_ias.dir/aux/main2.c.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing C source to CMakeFiles/montador_ias.dir/aux/main2.c.i"
+	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E /Users/julio.barros/montador_ias/aux/main2.c > CMakeFiles/montador_ias.dir/aux/main2.c.i
+
+CMakeFiles/montador_ias.dir/aux/main2.c.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling C source to assembly CMakeFiles/montador_ias.dir/aux/main2.c.s"
+	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S /Users/julio.barros/montador_ias/aux/main2.c -o CMakeFiles/montador_ias.dir/aux/main2.c.s
 
 CMakeFiles/montador_ias.dir/src/processarEntrada.c.o: CMakeFiles/montador_ias.dir/flags.make
 CMakeFiles/montador_ias.dir/src/processarEntrada.c.o: ../src/processarEntrada.c
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/Users/julio.barros/montador_ias/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_4) "Building C object CMakeFiles/montador_ias.dir/src/processarEntrada.c.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/Users/julio.barros/montador_ias/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_6) "Building C object CMakeFiles/montador_ias.dir/src/processarEntrada.c.o"
 	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -o CMakeFiles/montador_ias.dir/src/processarEntrada.c.o   -c /Users/julio.barros/montador_ias/src/processarEntrada.c
 
 CMakeFiles/montador_ias.dir/src/processarEntrada.c.i: cmake_force
@@ -111,7 +137,7 @@ CMakeFiles/montador_ias.dir/src/processarEntrada.c.s: cmake_force
 
 CMakeFiles/montador_ias.dir/src/token.c.o: CMakeFiles/montador_ias.dir/flags.make
 CMakeFiles/montador_ias.dir/src/token.c.o: ../src/token.c
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/Users/julio.barros/montador_ias/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_5) "Building C object CMakeFiles/montador_ias.dir/src/token.c.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/Users/julio.barros/montador_ias/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_7) "Building C object CMakeFiles/montador_ias.dir/src/token.c.o"
 	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -o CMakeFiles/montador_ias.dir/src/token.c.o   -c /Users/julio.barros/montador_ias/src/token.c
 
 CMakeFiles/montador_ias.dir/src/token.c.i: cmake_force
@@ -126,7 +152,9 @@ CMakeFiles/montador_ias.dir/src/token.c.s: cmake_force
 montador_ias_OBJECTS = \
 "CMakeFiles/montador_ias.dir/src/auxMontador.c.o" \
 "CMakeFiles/montador_ias.dir/src/emitirMapaDeMemoria.c.o" \
-"CMakeFiles/montador_ias.dir/src/main.c.o" \
+"CMakeFiles/montador_ias.dir/src/main1.c.o" \
+"CMakeFiles/montador_ias.dir/aux/main1.c.o" \
+"CMakeFiles/montador_ias.dir/aux/main2.c.o" \
 "CMakeFiles/montador_ias.dir/src/processarEntrada.c.o" \
 "CMakeFiles/montador_ias.dir/src/token.c.o"
 
@@ -135,12 +163,14 @@ montador_ias_EXTERNAL_OBJECTS =
 
 montador_ias: CMakeFiles/montador_ias.dir/src/auxMontador.c.o
 montador_ias: CMakeFiles/montador_ias.dir/src/emitirMapaDeMemoria.c.o
-montador_ias: CMakeFiles/montador_ias.dir/src/main.c.o
+montador_ias: CMakeFiles/montador_ias.dir/src/main1.c.o
+montador_ias: CMakeFiles/montador_ias.dir/aux/main1.c.o
+montador_ias: CMakeFiles/montador_ias.dir/aux/main2.c.o
 montador_ias: CMakeFiles/montador_ias.dir/src/processarEntrada.c.o
 montador_ias: CMakeFiles/montador_ias.dir/src/token.c.o
 montador_ias: CMakeFiles/montador_ias.dir/build.make
 montador_ias: CMakeFiles/montador_ias.dir/link.txt
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --bold --progress-dir=/Users/julio.barros/montador_ias/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_6) "Linking C executable montador_ias"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --bold --progress-dir=/Users/julio.barros/montador_ias/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_8) "Linking C executable montador_ias"
 	$(CMAKE_COMMAND) -E cmake_link_script CMakeFiles/montador_ias.dir/link.txt --verbose=$(VERBOSE)
 
 # Rule to build all files generated by this target.

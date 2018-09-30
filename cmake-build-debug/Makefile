@@ -123,6 +123,60 @@ montador_ias/fast:
 	$(MAKE) -f CMakeFiles/montador_ias.dir/build.make CMakeFiles/montador_ias.dir/build
 .PHONY : montador_ias/fast
 
+aux/main1.o: aux/main1.c.o
+
+.PHONY : aux/main1.o
+
+# target to build an object file
+aux/main1.c.o:
+	$(MAKE) -f CMakeFiles/montador_ias.dir/build.make CMakeFiles/montador_ias.dir/aux/main1.c.o
+.PHONY : aux/main1.c.o
+
+aux/main1.i: aux/main1.c.i
+
+.PHONY : aux/main1.i
+
+# target to preprocess a source file
+aux/main1.c.i:
+	$(MAKE) -f CMakeFiles/montador_ias.dir/build.make CMakeFiles/montador_ias.dir/aux/main1.c.i
+.PHONY : aux/main1.c.i
+
+aux/main1.s: aux/main1.c.s
+
+.PHONY : aux/main1.s
+
+# target to generate assembly for a file
+aux/main1.c.s:
+	$(MAKE) -f CMakeFiles/montador_ias.dir/build.make CMakeFiles/montador_ias.dir/aux/main1.c.s
+.PHONY : aux/main1.c.s
+
+aux/main2.o: aux/main2.c.o
+
+.PHONY : aux/main2.o
+
+# target to build an object file
+aux/main2.c.o:
+	$(MAKE) -f CMakeFiles/montador_ias.dir/build.make CMakeFiles/montador_ias.dir/aux/main2.c.o
+.PHONY : aux/main2.c.o
+
+aux/main2.i: aux/main2.c.i
+
+.PHONY : aux/main2.i
+
+# target to preprocess a source file
+aux/main2.c.i:
+	$(MAKE) -f CMakeFiles/montador_ias.dir/build.make CMakeFiles/montador_ias.dir/aux/main2.c.i
+.PHONY : aux/main2.c.i
+
+aux/main2.s: aux/main2.c.s
+
+.PHONY : aux/main2.s
+
+# target to generate assembly for a file
+aux/main2.c.s:
+	$(MAKE) -f CMakeFiles/montador_ias.dir/build.make CMakeFiles/montador_ias.dir/aux/main2.c.s
+.PHONY : aux/main2.c.s
+
 src/auxMontador.o: src/auxMontador.c.o
 
 .PHONY : src/auxMontador.o
@@ -177,32 +231,32 @@ src/emitirMapaDeMemoria.c.s:
 	$(MAKE) -f CMakeFiles/montador_ias.dir/build.make CMakeFiles/montador_ias.dir/src/emitirMapaDeMemoria.c.s
 .PHONY : src/emitirMapaDeMemoria.c.s
 
-src/main.o: src/main.c.o
+src/main1.o: src/main1.c.o
 
-.PHONY : src/main.o
+.PHONY : src/main1.o
 
 # target to build an object file
-src/main.c.o:
-	$(MAKE) -f CMakeFiles/montador_ias.dir/build.make CMakeFiles/montador_ias.dir/src/main.c.o
-.PHONY : src/main.c.o
+src/main1.c.o:
+	$(MAKE) -f CMakeFiles/montador_ias.dir/build.make CMakeFiles/montador_ias.dir/src/main1.c.o
+.PHONY : src/main1.c.o
 
-src/main.i: src/main.c.i
+src/main1.i: src/main1.c.i
 
-.PHONY : src/main.i
+.PHONY : src/main1.i
 
 # target to preprocess a source file
-src/main.c.i:
-	$(MAKE) -f CMakeFiles/montador_ias.dir/build.make CMakeFiles/montador_ias.dir/src/main.c.i
-.PHONY : src/main.c.i
+src/main1.c.i:
+	$(MAKE) -f CMakeFiles/montador_ias.dir/build.make CMakeFiles/montador_ias.dir/src/main1.c.i
+.PHONY : src/main1.c.i
 
-src/main.s: src/main.c.s
+src/main1.s: src/main1.c.s
 
-.PHONY : src/main.s
+.PHONY : src/main1.s
 
 # target to generate assembly for a file
-src/main.c.s:
-	$(MAKE) -f CMakeFiles/montador_ias.dir/build.make CMakeFiles/montador_ias.dir/src/main.c.s
-.PHONY : src/main.c.s
+src/main1.c.s:
+	$(MAKE) -f CMakeFiles/montador_ias.dir/build.make CMakeFiles/montador_ias.dir/src/main1.c.s
+.PHONY : src/main1.c.s
 
 src/processarEntrada.o: src/processarEntrada.c.o
 
@@ -267,15 +321,21 @@ help:
 	@echo "... rebuild_cache"
 	@echo "... edit_cache"
 	@echo "... montador_ias"
+	@echo "... aux/main1.o"
+	@echo "... aux/main1.i"
+	@echo "... aux/main1.s"
+	@echo "... aux/main2.o"
+	@echo "... aux/main2.i"
+	@echo "... aux/main2.s"
 	@echo "... src/auxMontador.o"
 	@echo "... src/auxMontador.i"
 	@echo "... src/auxMontador.s"
 	@echo "... src/emitirMapaDeMemoria.o"
 	@echo "... src/emitirMapaDeMemoria.i"
 	@echo "... src/emitirMapaDeMemoria.s"
-	@echo "... src/main.o"
-	@echo "... src/main.i"
-	@echo "... src/main.s"
+	@echo "... src/main1.o"
+	@echo "... src/main1.i"
+	@echo "... src/main1.s"
 	@echo "... src/processarEntrada.o"
 	@echo "... src/processarEntrada.i"
 	@echo "... src/processarEntrada.s"
