@@ -11,14 +11,20 @@ montador.h
 /Users/julio.barros/montador_ias/src/montador.h
 stdio.h
 -
-stdlib.h
--
-memory.h
--
 
 /Users/julio.barros/montador_ias/src/montador.h
 token.h
 /Users/julio.barros/montador_ias/src/token.h
+
+/Users/julio.barros/montador_ias/src/processarEntrada.c
+montador.h
+/Users/julio.barros/montador_ias/src/montador.h
+stdio.h
+-
+stdlib.h
+-
+memory.h
+-
 
 /Users/julio.barros/montador_ias/src/token.h
 

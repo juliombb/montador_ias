@@ -17,10 +17,10 @@ int verificarPalavraValida(const char *palavra, size_t len) {
 
     for (int i = 0; i < len; ++i) {
 
-        if (palavra[0] >= 48 && palavra[0] <= 57) { continue; }
-        if (palavra[0] >= 65 && palavra[0] <= 90) { continue; }
-        if (palavra[0] >= 97 && palavra[0] <= 122) { continue; }
-        if (palavra[0] == 95) { continue; }
+        if (palavra[i] >= 48 && palavra[i] <= 57) { continue; }
+        if (palavra[i] >= 65 && palavra[i] <= 90) { continue; }
+        if (palavra[i] >= 97 && palavra[i] <= 122) { continue; }
+        if (palavra[i] == 95) { continue; }
 
         // caracter invalido
         return 0;
@@ -35,7 +35,7 @@ char * paraMaiuscula(const char *palavra) {
     char decremento = 'a' - 'A';
 
     for (int i = 0; i < len; ++i) {
-        if (palavra[0] >= 65 && palavra[0] <= 90) {
+        if (palavra[i] >= 'a' && palavra[i] <= 'z') {
             maiuscula[i] = palavra[i] - decremento;
         } else {
             maiuscula[i] = palavra[i];

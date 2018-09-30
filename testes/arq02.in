@@ -1,8 +1,5 @@
 
 
+ADD 0x0000
 
-ADD 0x0000000
-
-label::
-.SET IN 59    #Error 'IN::' not valid
-.word IN
+label::         #Erro lexico: Label invalido, com '::'

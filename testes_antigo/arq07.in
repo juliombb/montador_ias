@@ -1,0 +1,3 @@
+.set VINTE 20
+.org 0x300
+.wfill 50 VINTE 

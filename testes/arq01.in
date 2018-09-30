@@ -1,2 +1,2 @@
-varx: .word 10 # (Decimal) comentario
-VARY: .word 0x100Y  #(Hexadecimal error) comentario
+varx: .word 10 # (Decimal)
+VARY: .word 0x100Y  #Erro Lexico

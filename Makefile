@@ -59,8 +59,8 @@ $(TESTES):
 			echo "*** TESTE "$(teste)": SUCESSO ***"; \
 		fi \
 	else \
-		if [ "`head -n 1 $(TESTOUTSDIR)/arq$(teste).res`" != "`head -n 1 $(RESULTSDIR)/arq$(teste).$(parte).res)`" ]; then \
-			echo " 1 `head -n 1 $(TESTOUTSDIR)/arq$(teste).res` |  `head -n 1 $(RESULTSDIR)/arq$(teste).$(parte).res)`"; \
+		if [ "`head -n 1 $(TESTOUTSDIR)/arq$(teste).res`" != "`head -n 1 $(RESULTSDIR)/arq$(teste).$(parte).res`" ]; then \
+			echo " 1 `head -n 1 $(TESTOUTSDIR)/arq$(teste).res` |  `head -n 1 $(RESULTSDIR)/arq$(teste).$(parte).res`"; \
 			echo "*** TESTE "$(teste)": ERRO ***"; \
 		else \
 			echo "NENHUMA DIFERENÇA! PARABÉNS!"; \

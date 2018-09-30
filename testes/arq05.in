@@ -1,2 +1,1 @@
-.org 102
-.wfillett 10 0x00000000A5 #Erro: Hexa '10aaa' precisa do prefixo '0x'
+.   #ERRO LEXICO

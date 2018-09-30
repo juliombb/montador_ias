@@ -1,0 +1,2 @@
+.org 0x000
+    loaddi   0x4AB  #Erro, loaddi não é uma instrução, logo é um NOME. NOME seguido de hexa

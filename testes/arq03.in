@@ -1,6 +1,4 @@
-.org 0x000
-.SET IN 59
-.word IN
 
-.align:
 vark: .word 15027
+
+.:    .word 1     #Erro Lexico: Invalido

@@ -1,4 +1,5 @@
 .wfill 50 varFill
 org 0x100
 
-100varfill:   #Lexical Error
+01varfill:   #Erro Lexico: Numero seguido de letras..
+#

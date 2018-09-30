@@ -1,0 +1,9 @@
+.set hex 0x64
+.set dec 100
+
+.org 0x000
+vetor1:
+    .wfill 20 hex
+.align  32
+vetor2:
+    .wfill 20 dec

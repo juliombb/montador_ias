@@ -1,3 +1,2 @@
-.set VINTE 20
-.org 0x300
-.wfill 50 VINTE 
+ADD 10
+.set VINTE 00X2CC   #Erro Lexico, numero decimal invalido, 00X...

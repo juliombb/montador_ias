@@ -1,9 +1,7 @@
 file(REMOVE_RECURSE
   "CMakeFiles/montador_ias.dir/src/auxMontador.c.o"
   "CMakeFiles/montador_ias.dir/src/emitirMapaDeMemoria.c.o"
-  "CMakeFiles/montador_ias.dir/src/main1.c.o"
-  "CMakeFiles/montador_ias.dir/aux/main1.c.o"
-  "CMakeFiles/montador_ias.dir/aux/main2.c.o"
+  "CMakeFiles/montador_ias.dir/src/main.c.o"
   "CMakeFiles/montador_ias.dir/src/processarEntrada.c.o"
   "CMakeFiles/montador_ias.dir/src/token.c.o"
   "montador_ias.pdb"

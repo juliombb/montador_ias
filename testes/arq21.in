@@ -1,0 +1,12 @@
+.SET TREZENTOS 300
+
+.org 0X300
+    um: .word 1
+
+.align 16
+    vetor: .wfill 15 TREZENTOS
+
+.org 0
+    ld vetor
+    add um
+    store vetor

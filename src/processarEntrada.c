@@ -37,48 +37,51 @@ int processarEntrada(char* entrada, unsigned tamanho)
 
         while (sscanf(innerLinhaLida, "%s%n", tokenAtual, &innerOffset) != EOF) {
             innerLinhaLida += innerOffset;
-            if (tokenAtual[0] == '#') {
+
+            if (strlen(tokenAtual) <= 0 || tokenAtual[0] == '\n' || tokenAtual[0] == '#') {
                 // comentario, acabou a linha
                 break;
             }
 
-            char *maiuscula = paraMaiuscula(tokenAtual);
-
             Token t;
-            t.linha = linhaAtual;
-            t.palavra = strcat(maiuscula, " ");
 
             if (eDiretiva(tokenAtual)) { t.tipo = Diretiva; }
             else if (eRotulo(tokenAtual)) { t.tipo = DefRotulo; }
             else if (eInstrucao(tokenAtual)) { t.tipo = Instrucao; }
             else {
-                if (recuperaToken(getNumberOfTokens() - 1).linha != linhaAtual
+                if (getNumberOfTokens() == 0
+                    || recuperaToken(getNumberOfTokens() - 1).linha != linhaAtual
                     || recuperaToken(getNumberOfTokens() - 1).tipo == DefRotulo) {
                     // Nesse caso, teriamos algo que nao eh instrucao nem diretiva nem rotulo no inicio ou após um rótulo.
 
                     // Parametro onde nao deveria (talvez isso não deva ser feito pra números)
-                    fprintf(stderr, "ERRO LEXICO: palavra inválida na linha %d!", linhaAtual);
-                    return 0;
+                    fprintf(stderr, "ERRO LEXICO: palavra inválida na linha %d!\n", linhaAtual);
+                    return 1;
                 }
                 else if (eHexadecimal(tokenAtual)) { t.tipo = Hexadecimal; }
                 else if (eDecimal(tokenAtual)) { t.tipo = Decimal; }
                 else if (eNome(tokenAtual)) { t.tipo = Nome; }
                 else {
-                    fprintf(stderr, "ERRO LEXICO: palavra inválida na linha %d!", linhaAtual);
-                    return 0;
+                    fprintf(stderr, "ERRO LEXICO: palavra inválida na linha %d!\n", linhaAtual);
+                    return 1;
                 }
             }
 
+            t.linha = linhaAtual;
+            char *newToken = (char *) malloc(strlen(tokenAtual)* sizeof(char));
+            strcpy(newToken, tokenAtual);
+            t.palavra = strcat(newToken, " ");
             adicionarToken(t);
 
         } // aqui eh o fim da linha
-        free(tokenAtual);
+        if (offset == 0) {
+            offset++;
+        }
         entradaPosicionada += offset;
         linhaAtual++;
     }
 
     free(linhaLida);
-    free(entradaPosicionada);
     /* printf("Você deve implementar esta função para a Parte 1.\n"); */
     return 0;
 }
