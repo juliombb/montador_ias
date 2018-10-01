@@ -1,1 +1,1 @@
-ERRO LEXICO: palavra inválida na linha 3!
+ERRO LEXICO: palavra inválida na linha 4!

@@ -6,12 +6,6 @@
 
 #IncludeRegexTransform: 
 
-/Users/julio.barros/montador_ias/src/main.c
-montador.h
-/Users/julio.barros/montador_ias/src/montador.h
-stdio.h
--
-
 /Users/julio.barros/montador_ias/src/montador.h
 token.h
 /Users/julio.barros/montador_ias/src/token.h

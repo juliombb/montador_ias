@@ -30,16 +30,16 @@ Token 6
 Token 7
 	Tipo: 1001 (Diretiva)
 	Palavra: .word 
-	Linha: 4
+	Linha: 5
 Token 8
 	Tipo: 1004 (Decimal)
 	Palavra: 10 
-	Linha: 4
+	Linha: 5
 Token 9
 	Tipo: 1001 (Diretiva)
 	Palavra: .word 
-	Linha: 5
+	Linha: 6
 Token 10
 	Tipo: 1004 (Decimal)
 	Palavra: 10 
-	Linha: 5
+	Linha: 6

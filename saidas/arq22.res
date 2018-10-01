@@ -4,7 +4,7 @@ Token 0
 	Palavra: .set 
 	Linha: 1
 Token 1
-	Tipo: 1000 (Instrucao)
+	Tipo: 1005 (Nome)
 	Palavra: hex 
 	Linha: 1
 Token 2
@@ -26,48 +26,48 @@ Token 5
 Token 6
 	Tipo: 1001 (Diretiva)
 	Palavra: .org 
-	Linha: 3
+	Linha: 4
 Token 7
 	Tipo: 1003 (Hexadecimal)
 	Palavra: 0x000 
-	Linha: 3
+	Linha: 4
 Token 8
 	Tipo: 1002 (Definicao Rotulo)
 	Palavra: vetor1: 
-	Linha: 4
+	Linha: 5
 Token 9
 	Tipo: 1001 (Diretiva)
 	Palavra: .wfill 
-	Linha: 5
+	Linha: 6
 Token 10
 	Tipo: 1004 (Decimal)
 	Palavra: 20 
-	Linha: 5
+	Linha: 6
 Token 11
-	Tipo: 1000 (Instrucao)
+	Tipo: 1005 (Nome)
 	Palavra: hex 
-	Linha: 5
+	Linha: 6
 Token 12
 	Tipo: 1001 (Diretiva)
 	Palavra: .align 
-	Linha: 6
+	Linha: 7
 Token 13
 	Tipo: 1004 (Decimal)
 	Palavra: 32 
-	Linha: 6
+	Linha: 7
 Token 14
 	Tipo: 1002 (Definicao Rotulo)
 	Palavra: vetor2: 
-	Linha: 7
+	Linha: 8
 Token 15
 	Tipo: 1001 (Diretiva)
 	Palavra: .wfill 
-	Linha: 8
+	Linha: 9
 Token 16
 	Tipo: 1004 (Decimal)
 	Palavra: 20 
-	Linha: 8
+	Linha: 9
 Token 17
 	Tipo: 1005 (Nome)
 	Palavra: dec 
-	Linha: 8
+	Linha: 9

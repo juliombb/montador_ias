@@ -1,1 +1,1 @@
-ERRO LEXICO: palavra inválida na linha 1!
+Lista de tokens

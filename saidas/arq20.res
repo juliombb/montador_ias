@@ -22,20 +22,20 @@ Token 4
 Token 5
 	Tipo: 1001 (Diretiva)
 	Palavra: .org 
-	Linha: 3
+	Linha: 4
 Token 6
 	Tipo: 1003 (Hexadecimal)
 	Palavra: 0x200 
-	Linha: 3
+	Linha: 4
 Token 7
 	Tipo: 1001 (Diretiva)
 	Palavra: .wfill 
-	Linha: 4
+	Linha: 5
 Token 8
 	Tipo: 1004 (Decimal)
 	Palavra: 15 
-	Linha: 4
+	Linha: 5
 Token 9
 	Tipo: 1004 (Decimal)
 	Palavra: 20 
-	Linha: 4
+	Linha: 5

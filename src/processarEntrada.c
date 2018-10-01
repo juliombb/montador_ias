@@ -4,6 +4,15 @@
 #include <memory.h>
 
 /*
+ * Funções auxiliares
+ */
+
+Token *encontraDefNome(char *palavra);
+Token *encontraDefNomeExcluindoPos(char *palavra, unsigned pos);
+int temErroNaInstrucao(Token token, unsigned pos);
+int temErroNaDiretiva(Token token, unsigned pos);
+
+/*
 Exemplo de erros:
 const char* get_error_string (enum errors code) {
     switch (code) {
@@ -15,6 +24,12 @@ const char* get_error_string (enum errors code) {
             return "LEXICO: Diretiva não válida";
 */
 
+void logErroLexico(unsigned linha);
+void logErroGramatical(unsigned linha); // funcoes para evitar erro na hora de fazer matching
+
+int processarErrosLexicos(char *entrada, unsigned int tamanho);
+int processarErrosGramaticais();
+
 /*
     ---- Você Deve implementar esta função para a parte 1.  ----
     Entrada da função: arquivo de texto lido e seu tamanho
@@ -24,12 +39,88 @@ const char* get_error_string (enum errors code) {
 */
 int processarEntrada(char* entrada, unsigned tamanho)
 {
-    char *linhaLida = (char*) malloc((tamanho+1)* sizeof(char)); // precaução, o nome
+    if (processarErrosLexicos(entrada, tamanho)) {
+        return 1;
+    }
+
+    if (processarErrosGramaticais()) {
+        return 1;
+    }
+
+    return 0;
+}
+
+int processarErrosGramaticais() {
+
+    for (unsigned pos = 0; pos < getNumberOfTokens(); ++pos) {
+        Token atual = recuperaToken(pos);
+
+        if (atual.tipo == Instrucao) {
+            if (temErroNaInstrucao(atual, pos)) {
+                return 1;
+            }
+        }
+        else if (atual.tipo == Diretiva) {
+            if (temErroNaDiretiva(atual, pos)) {
+                return 1;
+            }
+        }
+        else if (atual.tipo == DefRotulo) {
+            if (pos > 0 && recuperaToken(pos - 1).linha == atual.linha) {
+                logErroGramatical(atual.linha);
+                return 1;
+            }
+
+            if (encontraDefNomeExcluindoPos(atual.palavra, pos)) {
+                logErroGramatical(atual.linha);
+                return 1;
+            }
+
+        }
+        else if (atual.tipo == Hexadecimal
+                 || atual.tipo == Decimal
+                 || atual.tipo == Nome) {
+
+            Token tokenAnterior = recuperaToken(pos - 1);
+            if (pos == 0 || tokenAnterior.linha != atual.linha) {
+                logErroGramatical(atual.linha);
+                return 1;
+            }
+
+            if (tokenAnterior.tipo == DefRotulo) {
+                logErroGramatical(atual.linha);
+                return 1;
+            }
+        }
+    }
+
+    return 0;
+}
+
+int processarErrosLexicos(char *entrada, unsigned int tamanho) {
+    char *linhaLida = (char*) malloc((tamanho + 1) * sizeof(char));
     char *entradaPosicionada = entrada;
     unsigned offset = 0;
-    unsigned linhaAtual = 1;
+    unsigned linhaAtual = 0;
 
-    while (sscanf(entradaPosicionada, "%2000[^\n] %n", linhaLida, &offset) != EOF) {
+    while(1) {
+        unsigned i = 0;
+        while (1) {
+            if (sscanf(entradaPosicionada, "%c%n", &linhaLida[i], &offset) == EOF) {
+                free(linhaLida);
+                return 0;
+            }
+
+            entradaPosicionada += offset;
+
+            if (linhaLida[i] == '\n') { // terminou a linha
+                linhaLida[i] = '\0';
+                linhaAtual++;
+                break;
+            }
+
+            i++;
+        }
 
         char *tokenAtual = (char*) malloc(100* sizeof(char));
         char *innerLinhaLida = linhaLida;
@@ -48,23 +139,12 @@ int processarEntrada(char* entrada, unsigned tamanho)
             if (eDiretiva(tokenAtual)) { t.tipo = Diretiva; }
             else if (eRotulo(tokenAtual)) { t.tipo = DefRotulo; }
             else if (eInstrucao(tokenAtual)) { t.tipo = Instrucao; }
+            else if (eHexadecimal(tokenAtual)) { t.tipo = Hexadecimal; }
+            else if (eDecimal(tokenAtual)) { t.tipo = Decimal; }
+            else if (eNome(tokenAtual)) { t.tipo = Nome; }
             else {
-                if (getNumberOfTokens() == 0
-                    || recuperaToken(getNumberOfTokens() - 1).linha != linhaAtual
-                    || recuperaToken(getNumberOfTokens() - 1).tipo == DefRotulo) {
-                    // Nesse caso, teriamos algo que nao eh instrucao nem diretiva nem rotulo no inicio ou após um rótulo.
-
-                    // Parametro onde nao deveria (talvez isso não deva ser feito pra números)
-                    fprintf(stderr, "ERRO LEXICO: palavra inválida na linha %d!\n", linhaAtual);
-                    return 1;
-                }
-                else if (eHexadecimal(tokenAtual)) { t.tipo = Hexadecimal; }
-                else if (eDecimal(tokenAtual)) { t.tipo = Decimal; }
-                else if (eNome(tokenAtual)) { t.tipo = Nome; }
-                else {
-                    fprintf(stderr, "ERRO LEXICO: palavra inválida na linha %d!\n", linhaAtual);
-                    return 1;
-                }
+                logErroLexico(linhaAtual);
+                return 1;
             }
 
             t.linha = linhaAtual;
@@ -73,15 +153,302 @@ int processarEntrada(char* entrada, unsigned tamanho)
             t.palavra = strcat(newToken, " ");
             adicionarToken(t);
 
-        } // aqui eh o fim da linha
-        if (offset == 0) {
-            offset++;
         }
-        entradaPosicionada += offset;
-        linhaAtual++;
+
+        free(tokenAtual);
+    }
+}
+
+Token *encontraDefNome(char *palavra) {
+    for (unsigned i = 0; i < getNumberOfTokens(); ++i) {
+        Token *atual = (Token *) malloc(sizeof(Token));
+        (*atual) = recuperaToken(i);
+        char *rotuloPalavra = (char *) malloc((strlen(palavra)+1) * sizeof(char));
+        strcpy(rotuloPalavra, palavra);
+        rotuloPalavra[strlen(rotuloPalavra)-1] = '\0';
+        strcat(rotuloPalavra, ": ");
+
+        if (atual->tipo == DefRotulo && strcmp(atual->palavra, rotuloPalavra) == 0) {
+            return atual;
+        }
+
+        if (atual->tipo == Nome && strcmp(atual->palavra, palavra) == 0
+            && i > 0 && strcmp(paraMaiuscula(recuperaToken(i-1).palavra), ".SET ") == 0) {
+
+            // é definição de um .set
+            return atual;
+        }
+
+        free(atual);
     }
 
-    free(linhaLida);
-    /* printf("Você deve implementar esta função para a Parte 1.\n"); */
+    return NULL;
+}
+
+Token *encontraDefNomeExcluindoPos(char *palavra, unsigned pos) {
+    for (unsigned i = 0; i < getNumberOfTokens(); ++i) {
+        if (i == pos) { continue; }
+        Token *atual = (Token *) malloc(sizeof(Token));
+        (*atual) = recuperaToken(i);
+        char *rotuloPalavra = (char *) malloc((strlen(palavra)+1) * sizeof(char));
+        strcpy(rotuloPalavra, palavra);
+        rotuloPalavra[strlen(rotuloPalavra)-1] = '\0';
+        strcat(rotuloPalavra, ": ");
+
+        if (atual->tipo == DefRotulo && strcmp(atual->palavra, rotuloPalavra) == 0) {
+            return atual;
+        }
+
+        if (atual->tipo == Nome && strcmp(atual->palavra, palavra) == 0
+            && i > 0 && strcmp(paraMaiuscula(recuperaToken(i-1).palavra), ".SET ") == 0) {
+
+            // é definição de um .set
+            return atual;
+        }
+
+        free(atual);
+    }
+
+    return NULL;
+}
+
+int temErroNaInstrucao(Token token, unsigned pos) {
+    char *maiuscula = paraMaiuscula(token.palavra);
+
+    if (strcmp(maiuscula, "LDMQ ") == 0
+        || strcmp(maiuscula, "LSH ") == 0
+        || strcmp(maiuscula, "RSH ") == 0) {
+
+        // Instrucoes sem parametro
+
+        if (pos == (getNumberOfTokens() - 1)) { // esta na ultima posicao
+            return 0;
+        }
+
+        Token proxToken = recuperaToken(pos + 1);
+        if (proxToken.linha == token.linha) {
+            logErroGramatical(token.linha);
+            return 1;
+        }
+
+        return 0;
+    }
+
+    // Instrucoes com parametro
+
+    if (pos == (getNumberOfTokens() - 1)) { // esta na ultima posicao
+        logErroGramatical(token.linha);
+        return 1;
+    }
+
+    Token proxToken = recuperaToken(pos + 1);
+    if (proxToken.linha != token.linha) {
+        logErroGramatical(token.linha);
+        return 1;
+    }
+
+    if (proxToken.tipo == Nome) {
+        if (!encontraDefNome(proxToken.palavra)) {
+            logErroGramatical(token.linha);
+            return 1;
+        }
+    }
+
+    if (proxToken.tipo == Instrucao
+        || proxToken.tipo == Diretiva
+        || proxToken.tipo == DefRotulo) {
+
+        logErroGramatical(token.linha);
+        return 1;
+    }
+
+    if (pos == (getNumberOfTokens() - 2)) { // esta na penultima posicao e deu td certo
+        return 0;
+    }
+
+    if (recuperaToken(pos + 2).linha == token.linha) {
+        // nao esta na penultima e tem token na linha ainda
+        logErroGramatical(token.linha);
+        return 1;
+    }
+
     return 0;
+}
+
+int temErroNaDiretiva(Token token, unsigned pos) {
+    char *maiuscula = paraMaiuscula(token.palavra);
+
+    if (pos == (getNumberOfTokens() - 1)) { // esta na ultima posicao
+        logErroGramatical(token.linha);
+        return 1;
+    }
+
+    Token arg1 = recuperaToken(pos + 1);
+
+    if (arg1.linha != token.linha) {
+        logErroGramatical(token.linha);
+        return 1;
+    }
+
+    if (pos < (getNumberOfTokens() - 3)) { // esta antes da antepenultima posicao
+        Token arg3 = recuperaToken(pos + 3);
+        if (arg3.linha == token.linha) { // 3 parametros
+            logErroGramatical(token.linha);
+            return 1;
+        }
+    }
+
+    if (strcmp(maiuscula, ".SET ") == 0) {
+        if (arg1.tipo != Nome || encontraDefNomeExcluindoPos(arg1.palavra, pos + 1)) {
+            logErroGramatical(token.linha);
+            return 1;
+        }
+
+        if (pos == (getNumberOfTokens() - 2)) { // esta na penultima posicao
+            logErroGramatical(token.linha);
+            return 1;
+        }
+
+        Token arg2 = recuperaToken(pos + 2);
+        if (arg2.linha != token.linha) {
+            logErroGramatical(token.linha);
+            return 1;
+        }
+
+        if (arg2.tipo != Hexadecimal && arg2.tipo != Decimal) {
+            logErroGramatical(token.linha);
+            return 1;
+        }
+
+        if (arg2.tipo == Decimal) {
+            long valorInteiro = strtol(arg1.palavra, NULL, 10);
+            if (valorInteiro < 0) {
+                logErroGramatical(token.linha);
+                return 1;
+            }
+        }
+
+        return 0;
+    }
+
+    if (strcmp(maiuscula, ".ORG ") == 0) {
+        if (arg1.tipo != Decimal && arg1.tipo != Hexadecimal) {
+            logErroGramatical(token.linha);
+            return 1;
+        }
+
+        if (arg1.tipo == Decimal) {
+            long valorInteiro = strtol(arg1.palavra, NULL, 10);
+            if (valorInteiro > 1023 || valorInteiro < 0) {
+                logErroGramatical(token.linha);
+                return 1;
+            }
+        }
+
+        if (pos < (getNumberOfTokens() - 2)) { // esta antes da penultima posicao
+            Token arg2 = recuperaToken(pos + 2);
+            if (arg2.linha == token.linha) { // 2 parametros
+                logErroGramatical(token.linha);
+                return 1;
+            }
+        }
+
+        return 0;
+    }
+
+    if (strcmp(maiuscula, ".ALIGN ") == 0) {
+        if (arg1.tipo != Decimal) {
+            logErroGramatical(token.linha);
+            return 1;
+        }
+
+        if (arg1.tipo == Decimal) {
+            long valorInteiro = strtol(arg1.palavra, NULL, 10);
+            if (valorInteiro > 1023 || valorInteiro < 1) {
+                logErroGramatical(token.linha);
+                return 1;
+            }
+        }
+
+        if (pos < (getNumberOfTokens() - 2)) { // esta antes da penultima posicao
+            Token arg2 = recuperaToken(pos + 2);
+            if (arg2.linha == token.linha) { // 2 parametros
+                logErroGramatical(token.linha);
+                return 1;
+            }
+        }
+
+        return 0;
+    }
+
+    if (strcmp(maiuscula, ".WFILL ") == 0) {
+        if (arg1.tipo != Decimal) {
+            logErroGramatical(token.linha);
+            return 1;
+        }
+
+        if (arg1.tipo == Decimal) {
+            long valorInteiro = strtol(arg1.palavra, NULL, 10);
+            if (valorInteiro > 1023 || valorInteiro < 1) {
+                logErroGramatical(token.linha);
+                return 1;
+            }
+        }
+
+        if (pos == (getNumberOfTokens() - 2)) { // esta na penultima posicao
+            logErroGramatical(token.linha);
+            return 1;
+        }
+
+        Token arg2 = recuperaToken(pos + 2);
+        if (arg2.linha != token.linha) {
+            logErroGramatical(token.linha);
+            return 1;
+        }
+
+        if (arg2.tipo != Hexadecimal && arg2.tipo != Decimal && arg2.tipo != Nome) {
+            logErroGramatical(token.linha);
+            return 1;
+        }
+
+        if (arg2.tipo == Nome && !encontraDefNome(arg2.palavra)) {
+            logErroGramatical(token.linha);
+            return 1;
+        }
+
+        return 0;
+    }
+
+    if (strcmp(maiuscula, ".WORD ") == 0) {
+        if (arg1.tipo != Hexadecimal && arg1.tipo != Decimal && arg1.tipo != Nome) {
+            logErroGramatical(token.linha);
+            return 1;
+        }
+
+        if (arg1.tipo == Nome && !encontraDefNome(arg1.palavra)) {
+            logErroGramatical(token.linha);
+            return 1;
+        }
+
+        if (pos < (getNumberOfTokens() - 2)) { // esta antes da penultima posicao
+            Token arg2 = recuperaToken(pos + 2);
+            if (arg2.linha == token.linha) { // 2 parametros
+                logErroGramatical(token.linha);
+                return 1;
+            }
+        }
+
+        return 0;
+    }
+
+    logErroGramatical(token.linha);
+    return 1;
+}
+
+void logErroGramatical(unsigned linha) {
+    fprintf(stderr, "ERRO GRAMATICAL: palavra na linha %d!\n", linha);
+}
+
+void logErroLexico(unsigned linha) {
+    fprintf(stderr, "ERRO LEXICO: palavra inválida na linha %d!\n", linha);
 }

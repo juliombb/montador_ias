@@ -6,8 +6,8 @@
 #include <stdlib.h>
 #include <stdio.h>
 
-#define MAXINT 1099511627775 // 2^40 -1
-#define MININT -1099511627776 // -2^40
+#define MAXINT 2147483647 // 2^31 -1
+#define MININT -2147483648 // -2^31
 
 int verificarPalavraValida(const char *palavra, size_t len) {
     if (palavra[0] >= 48 && palavra[0] <= 57) {
@@ -31,10 +31,10 @@ int verificarPalavraValida(const char *palavra, size_t len) {
 
 char * paraMaiuscula(const char *palavra) {
     size_t len = strlen(palavra);
-    char *maiuscula = (char *) malloc(len* sizeof(char));
+    char *maiuscula = (char *) malloc((len+1)* sizeof(char));
     char decremento = 'a' - 'A';
 
-    for (int i = 0; i < len; ++i) {
+    for (int i = 0; i <= len; ++i) {
         if (palavra[i] >= 'a' && palavra[i] <= 'z') {
             maiuscula[i] = palavra[i] - decremento;
         } else {
@@ -51,7 +51,7 @@ int eHexadecimal(char* palavra) {
         return 0;
     }
 
-    if (palavra[0] == '0' && palavra[1] == 'x') {
+    if (palavra[0] == '0' && (palavra[1] == 'x' || palavra[1] == 'X')) {
 
         char* ptrErro;
         strtol(palavra, &ptrErro, 16);
@@ -121,10 +121,8 @@ int eInstrucao(char* palavra) {
     if (strcmp(maiuscula, "LDMQMX") == 0) { return 1; }
     if (strcmp(maiuscula, "STORE") == 0) { return 1; }
     if (strcmp(maiuscula, "JUMP") == 0) { return 1; }
-    if (strcmp(maiuscula, "HEX") == 0) { return 1; }
     if (strcmp(maiuscula, "JUMPL") == 0) { return 1; }
     if (strcmp(maiuscula, "JUMPR") == 0) { return 1; }
-    if (strcmp(maiuscula, "HEX") == 0) { return 1; }
     if (strcmp(maiuscula, "ADD") == 0) { return 1; }
     if (strcmp(maiuscula, "ADDABS") == 0) { return 1; }
     if (strcmp(maiuscula, "SUB") == 0) { return 1; }

@@ -33,13 +33,13 @@ Token 7
 	Linha: 4
 Token 8
 	Tipo: 1002 (Definicao Rotulo)
-	Palavra: var_desalinhada:0x20
-	Linha: 5
+	Palavra: var_desalinhada:.WORD
+	Linha: 6
 Token 9
 	Tipo: 1001 (Diretiva)
 	Palavra: .word 
-	Linha: 6
+	Linha: 7
 Token 10
 	Tipo: 1003 (Hexadecimal)
 	Palavra: 0x20 
-	Linha: 6
+	Linha: 7
