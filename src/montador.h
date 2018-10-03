@@ -17,15 +17,6 @@ enum errors
 };
 */
 
-/* Exemplos de funções uteis
-
-    //Retorna 1 se a palavra é um numero hexa ou 0 caso contrário
-    int eHexadecimal(char* palavra)
-
-    //Retorna 1 se a palavra é um numero Diretiva ou 0 caso contrário
-    int eDiretiva(char* palavra)
-*/
-// aux
 char* paraMaiuscula(char* palavra);
 int eHexadecimal(char* palavra);
 int eDecimal(char* palavra);

@@ -6,7 +6,7 @@
 #include <stdlib.h>
 #include <stdio.h>
 
-#define MAXINT 2147483647 // 2^31 -1
+#define MAXINT 2147483647 // 2^31 - 1
 #define MININT -2147483648 // -2^31
 
 int verificarPalavraValida(const char *palavra, size_t len) {
@@ -69,10 +69,10 @@ int eHexadecimal(char* palavra) {
 int eDecimal(char* palavra) {
     char* ptrErro;
 
-    long numeroParseado = strtol(palavra, &ptrErro, 10);
+    long long numeroParseado = strtoll(palavra, &ptrErro, 10);
 
     if (numeroParseado > MAXINT || numeroParseado < MININT) {
-        fprintf(stderr, "Overflow decimal.");
+        // fprintf(stderr, "Overflow decimal.");
         return 0;
     }
 
