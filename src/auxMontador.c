@@ -9,6 +9,9 @@
 #define MAXINT 2147483647 // 2^31 - 1
 #define MININT -2147483648 // -2^31
 
+/*
+ * Retorna 0 se a palavra é inválida e 1 se é válida (para rótulos ou símbolos)
+ */
 int verificarPalavraValida(const char *palavra, size_t len) {
     if (palavra[0] >= 48 && palavra[0] <= 57) {
         // numero no inicio

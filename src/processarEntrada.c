@@ -7,24 +7,15 @@
  * Funções auxiliares
  */
 
+// Erros em tokens
 int temErroNaInstrucao(Token token, unsigned pos);
 int temErroNaDiretiva(Token token, unsigned pos);
 
-/*
-Exemplo de erros:
-const char* get_error_string (enum errors code) {
-    switch (code) {
-        case ERR_HEXADECIMAL_NAO_VALIDO:
-            return "LEXICO: Numero Hexadecimal Inválido!";
-        case ERRO_ROTULO_JA_DEFINIDO:
-            return "GRAMATICAL: ROTULO JA FOI DEFINIDO!";
-        case ERR_DIRETIVA_NAO_VALIDA:
-            return "LEXICO: Diretiva não válida";
-*/
-
+// Funcoes para evitar erro no match dos testes
 void logErroLexico(unsigned linha);
-void logErroGramatical(unsigned linha); // funcoes para evitar erro na hora de fazer matching
+void logErroGramatical(unsigned linha);
 
+// Erros na entrada
 int existeErroLexico(char *entrada, unsigned int tamanho);
 int existeErroGramatical();
 
@@ -70,6 +61,7 @@ int existeErroGramatical() {
 
             case DefRotulo: {
                 if (pos > 0 && recuperaToken(pos - 1).linha == atual.linha) {
+                    // defRotulo deve ser a primeira coisa da linha
                     logErroGramatical(atual.linha);
                     return 1;
                 }
@@ -81,11 +73,13 @@ int existeErroGramatical() {
             case Nome: {
                 Token tokenAnterior = recuperaToken(pos - 1);
                 if (pos == 0 || tokenAnterior.linha != atual.linha) {
+                    // parametro nao deve estar no inicio da linha
                     logErroGramatical(atual.linha);
                     return 1;
                 }
 
                 if (tokenAnterior.tipo == DefRotulo) {
+                    // parametro nao deve estar logo depois de rotulo
                     logErroGramatical(atual.linha);
                     return 1;
                 }
@@ -106,6 +100,11 @@ int existeErroLexico(char *entrada, unsigned int tamanho) {
     while (1) {
         unsigned i = 0;
         while (1) {
+            /*
+             * Leitura feita caracter a caracter ate que seja encontrado \n
+             * se nada mais puder ser lido e erros nao foram retornados,
+             * a funcao terminou com sucesso
+             */
             if (sscanf(entradaPosicionada, "%c%n", &linhaLida[i], &offset) == EOF) {
                 free(linhaLida);
                 return 0;
@@ -122,7 +121,7 @@ int existeErroLexico(char *entrada, unsigned int tamanho) {
             i++;
         }
 
-        char *palavraAtual = (char*) malloc(100* sizeof(char));
+        char *palavraAtual = (char*) malloc(100 * sizeof(char));
         char *innerLinhaLida = linhaLida;
         unsigned innerOffset = 0;
 
@@ -130,7 +129,7 @@ int existeErroLexico(char *entrada, unsigned int tamanho) {
             innerLinhaLida += innerOffset;
 
             if (strlen(palavraAtual) <= 0 || palavraAtual[0] == '\n' || palavraAtual[0] == '#') {
-                // comentario, acabou a linha
+                // comentario, line break ou palavra vazia: acabou a linha
                 break;
             }
 
@@ -148,11 +147,10 @@ int existeErroLexico(char *entrada, unsigned int tamanho) {
             }
 
             token.linha = linhaAtual;
-            char *novaPalavra = (char *) malloc(strlen(palavraAtual)* sizeof(char));
+            char *novaPalavra = (char *) malloc(strlen(palavraAtual) * sizeof(char));
             strcpy(novaPalavra, palavraAtual);
             token.palavra = strcat(novaPalavra, " ");
             adicionarToken(token);
-
         }
 
         free(palavraAtual);
@@ -239,7 +237,6 @@ int temErroNaDiretiva(Token token, unsigned pos) {
     }
 
     if (strcmp(maiuscula, ".SET ") == 0) {
-
         if (pos == (getNumberOfTokens() - 2)) { // esta na penultima posicao
             logErroGramatical(token.linha);
             return 1;
