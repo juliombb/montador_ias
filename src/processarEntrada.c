@@ -7,8 +7,6 @@
  * Funções auxiliares
  */
 
-Token *encontraDefNome(char *palavra);
-Token *encontraDefNomeExcluindoPos(char *palavra, unsigned pos);
 int temErroNaInstrucao(Token token, unsigned pos);
 int temErroNaDiretiva(Token token, unsigned pos);
 
@@ -70,12 +68,6 @@ int processarErrosGramaticais() {
                 logErroGramatical(atual.linha);
                 return 1;
             }
-
-            if (encontraDefNomeExcluindoPos(atual.palavra, pos)) {
-                logErroGramatical(atual.linha);
-                return 1;
-            }
-
         }
         else if (atual.tipo == Hexadecimal
                  || atual.tipo == Decimal
@@ -159,59 +151,6 @@ int processarErrosLexicos(char *entrada, unsigned int tamanho) {
     }
 }
 
-Token *encontraDefNome(char *palavra) {
-    for (unsigned i = 0; i < getNumberOfTokens(); ++i) {
-        Token *atual = (Token *) malloc(sizeof(Token));
-        (*atual) = recuperaToken(i);
-        char *rotuloPalavra = (char *) malloc((strlen(palavra)+1) * sizeof(char));
-        strcpy(rotuloPalavra, palavra);
-        rotuloPalavra[strlen(rotuloPalavra)-1] = '\0';
-        strcat(rotuloPalavra, ": ");
-
-        if (atual->tipo == DefRotulo && strcmp(atual->palavra, rotuloPalavra) == 0) {
-            return atual;
-        }
-
-        if (atual->tipo == Nome && strcmp(atual->palavra, palavra) == 0
-            && i > 0 && strcmp(paraMaiuscula(recuperaToken(i-1).palavra), ".SET ") == 0) {
-
-            // é definição de um .set
-            return atual;
-        }
-
-        free(atual);
-    }
-
-    return NULL;
-}
-
-Token *encontraDefNomeExcluindoPos(char *palavra, unsigned pos) {
-    for (unsigned i = 0; i < getNumberOfTokens(); ++i) {
-        if (i == pos) { continue; }
-        Token *atual = (Token *) malloc(sizeof(Token));
-        (*atual) = recuperaToken(i);
-        char *rotuloPalavra = (char *) malloc((strlen(palavra)+1) * sizeof(char));
-        strcpy(rotuloPalavra, palavra);
-        rotuloPalavra[strlen(rotuloPalavra)-1] = '\0';
-        strcat(rotuloPalavra, ": ");
-
-        if (atual->tipo == DefRotulo && strcmp(atual->palavra, rotuloPalavra) == 0) {
-            return atual;
-        }
-
-        if (atual->tipo == Nome && strcmp(atual->palavra, palavra) == 0
-            && i > 0 && strcmp(paraMaiuscula(recuperaToken(i-1).palavra), ".SET ") == 0) {
-
-            // é definição de um .set
-            return atual;
-        }
-
-        free(atual);
-    }
-
-    return NULL;
-}
-
 int temErroNaInstrucao(Token token, unsigned pos) {
     char *maiuscula = paraMaiuscula(token.palavra);
 
@@ -245,13 +184,6 @@ int temErroNaInstrucao(Token token, unsigned pos) {
     if (proxToken.linha != token.linha) {
         logErroGramatical(token.linha);
         return 1;
-    }
-
-    if (proxToken.tipo == Nome) {
-        if (!encontraDefNome(proxToken.palavra)) {
-            logErroGramatical(token.linha);
-            return 1;
-        }
     }
 
     if (proxToken.tipo == Instrucao
@@ -299,10 +231,6 @@ int temErroNaDiretiva(Token token, unsigned pos) {
     }
 
     if (strcmp(maiuscula, ".SET ") == 0) {
-        if (arg1.tipo != Nome || encontraDefNomeExcluindoPos(arg1.palavra, pos + 1)) {
-            logErroGramatical(token.linha);
-            return 1;
-        }
 
         if (pos == (getNumberOfTokens() - 2)) { // esta na penultima posicao
             logErroGramatical(token.linha);
@@ -411,21 +339,11 @@ int temErroNaDiretiva(Token token, unsigned pos) {
             return 1;
         }
 
-        if (arg2.tipo == Nome && !encontraDefNome(arg2.palavra)) {
-            logErroGramatical(token.linha);
-            return 1;
-        }
-
         return 0;
     }
 
     if (strcmp(maiuscula, ".WORD ") == 0) {
         if (arg1.tipo != Hexadecimal && arg1.tipo != Decimal && arg1.tipo != Nome) {
-            logErroGramatical(token.linha);
-            return 1;
-        }
-
-        if (arg1.tipo == Nome && !encontraDefNome(arg1.palavra)) {
             logErroGramatical(token.linha);
             return 1;
         }
