@@ -17,6 +17,6 @@ int eRotulo(char* palavra);
 int eInstrucao(char* palavre);
 
 int processarEntrada(char*, unsigned);
-int emitirMapaDeMemoria();
+/*int emitirMapaDeMemoria();*/
 
 #endif
