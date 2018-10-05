@@ -219,4 +219,3 @@ Token 54
 	Tipo: 1005 (Nome)
 	Palavra: "var_3"
 	Linha: 30
-	

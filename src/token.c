@@ -55,7 +55,7 @@ void imprimeListaTokens() {
   for (unsigned i = 0; i < tamTokens; i++) {
     printf("Token %d\n", i);
     printf("\tTipo: %d (%s)\n", (int) tokens[i].tipo, tokenNames[(int) tokens[i].tipo - (int)Instrucao]);
-    printf("\tPalavra: %s\n", tokens[i].palavra);
+    printf("\tPalavra: \"%s\"\n", tokens[i].palavra);
     printf("\tLinha: %u\n", tokens[i].linha);
   }
 }

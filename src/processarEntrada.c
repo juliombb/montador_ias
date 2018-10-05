@@ -151,7 +151,7 @@ int existeErroLexico(char *entrada, unsigned int tamanho) {
             token.linha = linhaAtual;
             char *novaPalavra = (char *) malloc(strlen(palavraAtual) * sizeof(char));
             strcpy(novaPalavra, palavraAtual);
-            token.palavra = strcat(novaPalavra, " ");
+            token.palavra = novaPalavra;
             adicionarToken(token);
         }
 
@@ -162,9 +162,9 @@ int existeErroLexico(char *entrada, unsigned int tamanho) {
 int temErroNaInstrucao(Token token, unsigned pos) {
     char *maiuscula = paraMaiuscula(token.palavra);
 
-    if (strcmp(maiuscula, "LDMQ ") == 0
-        || strcmp(maiuscula, "LSH ") == 0
-        || strcmp(maiuscula, "RSH ") == 0) {
+    if (strcmp(maiuscula, "LDMQ") == 0
+        || strcmp(maiuscula, "LSH") == 0
+        || strcmp(maiuscula, "RSH") == 0) {
 
         // Instrucoes sem parametro
 
@@ -238,7 +238,7 @@ int temErroNaDiretiva(Token token, unsigned pos) {
         }
     }
 
-    if (strcmp(maiuscula, ".SET ") == 0) {
+    if (strcmp(maiuscula, ".SET") == 0) {
         if (pos == (getNumberOfTokens() - 2)) { // esta na penultima posicao
             logErroGramatical(token.linha);
             return 1;
@@ -266,7 +266,7 @@ int temErroNaDiretiva(Token token, unsigned pos) {
         return 0;
     }
 
-    if (strcmp(maiuscula, ".ORG ") == 0) {
+    if (strcmp(maiuscula, ".ORG") == 0) {
         if (arg1.tipo != Decimal && arg1.tipo != Hexadecimal) {
             logErroGramatical(token.linha);
             return 1;
@@ -291,7 +291,7 @@ int temErroNaDiretiva(Token token, unsigned pos) {
         return 0;
     }
 
-    if (strcmp(maiuscula, ".ALIGN ") == 0) {
+    if (strcmp(maiuscula, ".ALIGN") == 0) {
         if (arg1.tipo != Decimal) {
             logErroGramatical(token.linha);
             return 1;
@@ -316,7 +316,7 @@ int temErroNaDiretiva(Token token, unsigned pos) {
         return 0;
     }
 
-    if (strcmp(maiuscula, ".WFILL ") == 0) {
+    if (strcmp(maiuscula, ".WFILL") == 0) {
         if (arg1.tipo != Decimal) {
             logErroGramatical(token.linha);
             return 1;
@@ -349,7 +349,7 @@ int temErroNaDiretiva(Token token, unsigned pos) {
         return 0;
     }
 
-    if (strcmp(maiuscula, ".WORD ") == 0) {
+    if (strcmp(maiuscula, ".WORD") == 0) {
         if (arg1.tipo != Hexadecimal && arg1.tipo != Decimal && arg1.tipo != Nome) {
             logErroGramatical(token.linha);
             return 1;

@@ -13,7 +13,7 @@ CFLAGS = -std=c99 -Wall -O2
 LDFLAGS = -lm
 
 EXECUTES := $(wildcard $(TESTDIR)/*.in)
-TESTES = 00 01 02 03 04 05 06 07 08 09 10 11 12 13 14 15 16 17 18 19 20 21 22 23 24 25
+TESTES = 00 01 02 03 04 05 06 07 08 09 10 11 12 13 14 15 16 17 18 19 20 21 22 23
 
 montador-p1.x: rule_mkpath
 	cat $(AUXDIR)/main1.c > $(SRC)/main.c
@@ -42,7 +42,7 @@ set-parte1:
 set-parte2:
 	$(eval parte=parte2)
 
-$(TESTES):
+$(TESTES): montador-p1.x executar-tudo
 	$(eval teste=$@)
 	@echo "------------------- TESTE:" $(teste) " -------------------------"
 
