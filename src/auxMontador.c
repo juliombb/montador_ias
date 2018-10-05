@@ -1,6 +1,4 @@
-//
-// Created by Julio Moreira B. Barros on 9/11/18.
-//
+// Júlio Moreira Blás de Barros RA 200491
 
 #include <memory.h>
 #include <stdlib.h>
