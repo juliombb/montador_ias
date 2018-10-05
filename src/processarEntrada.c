@@ -149,7 +149,7 @@ int existeErroLexico(char *entrada, unsigned int tamanho) {
             }
 
             token.linha = linhaAtual;
-            char *novaPalavra = (char *) malloc(strlen(palavraAtual) * sizeof(char));
+            char *novaPalavra = (char *) malloc((strlen(palavraAtual)+1) * sizeof(char));
             strcpy(novaPalavra, palavraAtual);
             token.palavra = novaPalavra;
             adicionarToken(token);
