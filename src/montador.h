@@ -19,6 +19,7 @@ int eRotulo(char* palavra);
 int eInstrucao(char* palavre);
 
 int processarEntrada(char*, unsigned);
+void logErroGramatical(unsigned linha); // para ajudar na verificação de erros
 /*int emitirMapaDeMemoria();*/
 
 #endif

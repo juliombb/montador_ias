@@ -15,7 +15,6 @@ int temErroNaDiretiva(Token token, unsigned pos);
 
 // Funcoes para evitar erro no match dos testes
 void logErroLexico(unsigned linha);
-void logErroGramatical(unsigned linha);
 
 // Erros na entrada
 int existeErroLexico(char *entrada, unsigned int tamanho);
