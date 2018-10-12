@@ -12,9 +12,12 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="96fff3ac-3932-4180-a115-089df153f49a" name="Default Changelist" comment="">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bin/montador.x" beforeDir="false" afterPath="$PROJECT_DIR$/bin/montador.x" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/auxMontador.c" beforeDir="false" afterPath="$PROJECT_DIR$/src/auxMontador.c" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/emitirMapaDeMemoria.c" beforeDir="false" afterPath="$PROJECT_DIR$/src/emitirMapaDeMemoria.c" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main.c" beforeDir="false" afterPath="$PROJECT_DIR$/src/main.c" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/montador.h" beforeDir="false" afterPath="$PROJECT_DIR$/src/montador.h" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/processarEntrada.c" beforeDir="false" afterPath="$PROJECT_DIR$/src/processarEntrada.c" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/cmake-build-debug/" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -28,9 +31,9 @@
     <session id="1634165206">
       <usages-collector id="statistics.lifecycle.project">
         <counts>
-          <entry key="project.closed" value="9" />
+          <entry key="project.closed" value="10" />
           <entry key="project.open.time.1" value="1" />
-          <entry key="project.open.time.10" value="1" />
+          <entry key="project.open.time.10" value="2" />
           <entry key="project.open.time.11" value="1" />
           <entry key="project.open.time.12" value="2" />
           <entry key="project.open.time.2" value="1" />
@@ -38,28 +41,28 @@
           <entry key="project.open.time.4" value="1" />
           <entry key="project.open.time.54" value="1" />
           <entry key="project.open.time.9" value="1" />
-          <entry key="project.opened" value="10" />
+          <entry key="project.opened" value="11" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.extensions.open">
         <counts>
           <entry key="c" value="13" />
-          <entry key="h" value="17" />
-          <entry key="md" value="1" />
+          <entry key="h" value="18" />
+          <entry key="md" value="2" />
           <entry key="txt" value="1" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.types.open">
         <counts>
           <entry key="CMakeLists.txt" value="1" />
-          <entry key="ObjectiveC" value="30" />
-          <entry key="PLAIN_TEXT" value="1" />
+          <entry key="ObjectiveC" value="31" />
+          <entry key="PLAIN_TEXT" value="2" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.extensions.edit">
         <counts>
-          <entry key="c" value="13087" />
-          <entry key="h" value="365" />
+          <entry key="c" value="16482" />
+          <entry key="h" value="389" />
           <entry key="m" value="134" />
           <entry key="txt" value="63" />
         </counts>
@@ -67,7 +70,7 @@
       <usages-collector id="statistics.file.types.edit">
         <counts>
           <entry key="CMakeLists.txt" value="63" />
-          <entry key="ObjectiveC" value="13586" />
+          <entry key="ObjectiveC" value="17005" />
         </counts>
       </usages-collector>
     </session>
@@ -77,8 +80,8 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/processarEntrada.c">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="155">
-              <caret line="239" column="4" selection-start-line="239" selection-start-column="4" selection-end-line="365" selection-end-column="5" />
+            <state relative-caret-position="221">
+              <caret line="372" column="11" selection-start-line="372" selection-start-column="5" selection-end-line="372" selection-end-column="11" />
             </state>
           </provider>
         </entry>
@@ -86,8 +89,9 @@
       <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/emitirMapaDeMemoria.c">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="446">
-              <caret line="303" column="47" selection-start-line="303" selection-start-column="47" selection-end-line="303" selection-end-column="47" />
+            <state relative-caret-position="465">
+              <caret line="34" column="17" selection-start-line="34" selection-start-column="17" selection-end-line="34" selection-end-column="17" />
+              <caret line="318" column="17" selection-start-line="318" selection-start-column="17" selection-end-line="318" selection-end-column="17" />
               <folding>
                 <element signature="e#0#21#0" expanded="true" />
               </folding>
@@ -98,7 +102,7 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/aux/main2.c">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-263">
+            <state>
               <folding>
                 <element signature="e#0#21#0" expanded="true" />
               </folding>
@@ -109,8 +113,8 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/main.c">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="17">
-              <caret line="2" selection-start-line="2" selection-end-line="2" />
+            <state relative-caret-position="224">
+              <caret line="36" column="17" selection-start-line="36" selection-start-column="17" selection-end-line="36" selection-end-column="17" />
             </state>
           </provider>
         </entry>
@@ -118,7 +122,7 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/token.c">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="833">
+            <state relative-caret-position="867">
               <caret line="51" selection-start-line="51" selection-end-line="51" />
             </state>
           </provider>
@@ -127,8 +131,8 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/token.h">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="136">
-              <caret line="8" column="11" selection-start-line="8" selection-start-column="11" selection-end-line="8" selection-end-column="11" />
+            <state relative-caret-position="51">
+              <caret line="3" column="103" lean-forward="true" selection-start-line="3" selection-end-line="3" selection-end-column="103" />
             </state>
           </provider>
         </entry>
@@ -136,8 +140,8 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/montador.h">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="357">
-              <caret line="21" column="78" selection-start-line="21" selection-start-column="78" selection-end-line="21" selection-end-column="78" />
+            <state relative-caret-position="166">
+              <caret line="23" column="26" lean-forward="true" selection-start-line="23" selection-start-column="26" selection-end-line="23" selection-end-column="26" />
             </state>
           </provider>
         </entry>
@@ -145,8 +149,8 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/auxMontador.c">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="1955">
-              <caret line="117" column="4" selection-start-line="117" selection-start-column="4" selection-end-line="135" selection-end-column="55" />
+            <state relative-caret-position="226">
+              <caret line="157" column="49" selection-start-line="157" selection-start-column="49" selection-end-line="157" selection-end-column="49" />
             </state>
           </provider>
         </entry>
@@ -155,30 +159,36 @@
   </component>
   <component name="FindInProjectRecents">
     <findStrings>
-      <find>argv</find>
-      <find>maius</find>
-      <find>fprintf</find>
-      <find>encontra</find>
-      <find>encontraDefNome</find>
-      <find>trataDir</find>
-      <find>Instru</find>
-      <find>.WORD</find>
-      <find>Def</find>
-      <find>:</find>
-      <find>DefNome</find>
-      <find>temErro</find>
-      <find>wfill</find>
-      <find>paraMa</find>
-      <find>Org</find>
-      <find>eDecim</find>
-      <find>.Al</find>
-      <find>.set</find>
-      <find>wfil</find>
       <find>== Decimal</find>
       <find>encontraDAf</find>
       <find>encontraDef</find>
       <find>sizeof</find>
       <find>NULL</find>
+      <find>%03x</find>
+      <find>numsym</find>
+      <find>nu</find>
+      <find>log</find>
+      <find>logErroGrama</find>
+      <find>&gt;</find>
+      <find>+= 1</find>
+      <find>*numLinha</find>
+      <find>define</find>
+      <find>.SET</find>
+      <find>linhaAtual[0][0]</find>
+      <find>tamS</find>
+      <find>malloc(12</find>
+      <find>%010</find>
+      <find>JUMP</find>
+      <find>sprintf</find>
+      <find>1023</find>
+      <find>J+</find>
+      <find>'w'</find>
+      <find>printf</find>
+      <find>alocaLi</find>
+      <find>.ALIG</find>
+      <find>.ORG</find>
+      <find>.WORD</find>
+      <find>deveArma</find>
     </findStrings>
   </component>
   <component name="Git.Settings">
@@ -192,8 +202,8 @@
         <option value="$PROJECT_DIR$/src/token.h" />
         <option value="$PROJECT_DIR$/src/token.c" />
         <option value="$PROJECT_DIR$/src/main.c" />
-        <option value="$PROJECT_DIR$/src/auxMontador.c" />
         <option value="$PROJECT_DIR$/src/processarEntrada.c" />
+        <option value="$PROJECT_DIR$/src/auxMontador.c" />
         <option value="$PROJECT_DIR$/src/montador.h" />
         <option value="$PROJECT_DIR$/src/emitirMapaDeMemoria.c" />
       </list>
@@ -207,8 +217,9 @@
   </component>
   <component name="OCFindUsagesOptions" text="true" ivars="false" properties="true" derivedClasses="false" />
   <component name="ProjectFrameBounds" extendedState="6">
-    <option name="y" value="22" />
-    <option name="width" value="747" />
+    <option name="x" value="184" />
+    <option name="y" value="263" />
+    <option name="width" value="1280" />
     <option name="height" value="778" />
   </component>
   <component name="ProjectView">
@@ -298,18 +309,19 @@
       <workItem from="1538268184057" duration="9279000" />
       <workItem from="1538343994407" duration="13597000" />
       <workItem from="1538596508167" duration="4150000" />
-      <workItem from="1539204304657" duration="9221000" />
+      <workItem from="1539204304657" duration="9359000" />
+      <workItem from="1539295601053" duration="8901000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="50047000" />
+    <option name="totallyTimeSpent" value="59086000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="0" y="22" width="1280" height="778" extended-state="6" />
     <editor active="true" />
     <layout>
-      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.25040388" />
+      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.25444266" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info id="Favorites" order="2" side_tool="true" />
       <window_info anchor="bottom" id="Message" order="0" />
@@ -320,7 +332,7 @@
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
       <window_info anchor="bottom" id="TODO" order="6" />
       <window_info anchor="bottom" id="Database Changes" order="7" show_stripe_button="false" />
-      <window_info anchor="bottom" id="Terminal" order="8" weight="0.3586006" />
+      <window_info active="true" anchor="bottom" id="Terminal" order="8" visible="true" weight="0.2026239" />
       <window_info anchor="bottom" id="Event Log" order="9" side_tool="true" />
       <window_info anchor="bottom" id="Version Control" order="10" show_stripe_button="false" />
       <window_info anchor="bottom" id="CMake" order="11" weight="0.29178083" />
@@ -387,40 +399,11 @@
     </expressions>
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/README.md">
-      <provider selected="true" editor-type-id="text-editor" />
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/teste.c" />
-    <entry file="file://$PROJECT_DIR$/aux/main2.c">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-263">
-          <folding>
-            <element signature="e#0#21#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main.c">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="17">
-          <caret line="2" selection-start-line="2" selection-end-line="2" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/auxMontador.c">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1955">
-          <caret line="117" column="4" selection-start-line="117" selection-start-column="4" selection-end-line="135" selection-end-column="55" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/aux/main1.c">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="289">
           <caret line="18" column="19" selection-start-line="18" selection-start-column="19" selection-end-line="18" selection-end-column="19" />
-          <folding>
-            <element signature="e#0#21#0" expanded="true" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -445,38 +428,72 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/montador.h">
+    <entry file="file://$PROJECT_DIR$/aux/main2.c">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="357">
-          <caret line="21" column="78" selection-start-line="21" selection-start-column="78" selection-end-line="21" selection-end-column="78" />
+        <state>
+          <folding>
+            <element signature="e#0#21#0" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/token.c">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="833">
+        <state relative-caret-position="867">
           <caret line="51" selection-start-line="51" selection-end-line="51" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/README.md">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/auxMontador.c">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="226">
+          <caret line="157" column="49" selection-start-line="157" selection-start-column="49" selection-end-line="157" selection-end-column="49" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/token.h">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="136">
-          <caret line="8" column="11" selection-start-line="8" selection-start-column="11" selection-end-line="8" selection-end-column="11" />
+        <state relative-caret-position="51">
+          <caret line="3" column="103" lean-forward="true" selection-start-line="3" selection-end-line="3" selection-end-column="103" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/processarEntrada.c">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="155">
-          <caret line="239" column="4" selection-start-line="239" selection-start-column="4" selection-end-line="365" selection-end-column="5" />
+        <state relative-caret-position="221">
+          <caret line="372" column="11" selection-start-line="372" selection-start-column="5" selection-end-line="372" selection-end-column="11" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main.c">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="224">
+          <caret line="36" column="17" selection-start-line="36" selection-start-column="17" selection-end-line="36" selection-end-column="17" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file:///usr/include/secure/_common.h">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="138">
+          <caret line="38" selection-start-line="38" selection-end-line="38" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/montador.h">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="166">
+          <caret line="23" column="26" lean-forward="true" selection-start-line="23" selection-start-column="26" selection-end-line="23" selection-end-column="26" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/emitirMapaDeMemoria.c">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="446">
-          <caret line="303" column="47" selection-start-line="303" selection-start-column="47" selection-end-line="303" selection-end-column="47" />
+        <state relative-caret-position="465">
+          <caret line="34" column="17" selection-start-line="34" selection-start-column="17" selection-end-line="34" selection-end-column="17" />
+          <caret line="318" column="17" selection-start-line="318" selection-start-column="17" selection-end-line="318" selection-end-column="17" />
           <folding>
             <element signature="e#0#21#0" expanded="true" />
           </folding>

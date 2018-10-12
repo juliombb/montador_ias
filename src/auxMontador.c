@@ -153,3 +153,7 @@ int eRotulo(char* palavra) {
 
     return verificarPalavraValida(palavra, len - 1);
 }
+
+void logErroMontagem() {
+    fprintf(stderr, "IMPOSSIVEL MONTAR CODIGO!");
+}
