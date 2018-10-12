@@ -14,10 +14,24 @@
     <list default="true" id="96fff3ac-3932-4180-a115-089df153f49a" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/bin/montador.x" beforeDir="false" afterPath="$PROJECT_DIR$/bin/montador.x" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/auxMontador.c" beforeDir="false" afterPath="$PROJECT_DIR$/src/auxMontador.c" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/montador_ias.dir/C.includecache" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/montador_ias.dir/C.includecache" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/montador_ias.dir/src/auxMontador.c.o" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/montador_ias.dir/src/auxMontador.c.o" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/montador_ias.dir/src/emitirMapaDeMemoria.c.o" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/montador_ias.dir/src/emitirMapaDeMemoria.c.o" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/montador_ias.dir/src/main.c.o" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/montador_ias.dir/src/main.c.o" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/montador_ias.dir/src/processarEntrada.c.o" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/montador_ias.dir/src/processarEntrada.c.o" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/montador_ias.dir/src/token.c.o" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/montador_ias.dir/src/token.c.o" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/cmake-build-debug/montador_ias" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/montador_ias" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/saidas/arq00.res" beforeDir="false" afterPath="$PROJECT_DIR$/saidas/arq00.res" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/saidas/arq09.res" beforeDir="false" afterPath="$PROJECT_DIR$/saidas/arq09.res" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/saidas/arq16.res" beforeDir="false" afterPath="$PROJECT_DIR$/saidas/arq16.res" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/saidas/arq17.res" beforeDir="false" afterPath="$PROJECT_DIR$/saidas/arq17.res" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/saidas/arq18.res" beforeDir="false" afterPath="$PROJECT_DIR$/saidas/arq18.res" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/saidas/arq19.res" beforeDir="false" afterPath="$PROJECT_DIR$/saidas/arq19.res" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/saidas/arq20.res" beforeDir="false" afterPath="$PROJECT_DIR$/saidas/arq20.res" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/saidas/arq21.res" beforeDir="false" afterPath="$PROJECT_DIR$/saidas/arq21.res" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/saidas/arq22.res" beforeDir="false" afterPath="$PROJECT_DIR$/saidas/arq22.res" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/saidas/arq23.res" beforeDir="false" afterPath="$PROJECT_DIR$/saidas/arq23.res" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/emitirMapaDeMemoria.c" beforeDir="false" afterPath="$PROJECT_DIR$/src/emitirMapaDeMemoria.c" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main.c" beforeDir="false" afterPath="$PROJECT_DIR$/src/main.c" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/montador.h" beforeDir="false" afterPath="$PROJECT_DIR$/src/montador.h" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/cmake-build-debug/" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -61,16 +75,16 @@
       </usages-collector>
       <usages-collector id="statistics.file.extensions.edit">
         <counts>
-          <entry key="c" value="16482" />
+          <entry key="c" value="17613" />
           <entry key="h" value="389" />
-          <entry key="m" value="134" />
+          <entry key="m" value="155" />
           <entry key="txt" value="63" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.types.edit">
         <counts>
           <entry key="CMakeLists.txt" value="63" />
-          <entry key="ObjectiveC" value="17005" />
+          <entry key="ObjectiveC" value="18157" />
         </counts>
       </usages-collector>
     </session>
@@ -80,7 +94,7 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/processarEntrada.c">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="221">
+            <state relative-caret-position="6273">
               <caret line="372" column="11" selection-start-line="372" selection-start-column="5" selection-end-line="372" selection-end-column="11" />
             </state>
           </provider>
@@ -89,9 +103,8 @@
       <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/emitirMapaDeMemoria.c">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="465">
-              <caret line="34" column="17" selection-start-line="34" selection-start-column="17" selection-end-line="34" selection-end-column="17" />
-              <caret line="318" column="17" selection-start-line="318" selection-start-column="17" selection-end-line="318" selection-end-column="17" />
+            <state relative-caret-position="340">
+              <caret line="180" column="44" selection-start-line="180" selection-start-column="44" selection-end-line="180" selection-end-column="44" />
               <folding>
                 <element signature="e#0#21#0" expanded="true" />
               </folding>
@@ -113,8 +126,8 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/main.c">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="224">
-              <caret line="36" column="17" selection-start-line="36" selection-start-column="17" selection-end-line="36" selection-end-column="17" />
+            <state relative-caret-position="245">
+              <caret line="37" selection-start-line="37" selection-end-line="37" />
             </state>
           </provider>
         </entry>
@@ -132,7 +145,7 @@
         <entry file="file://$PROJECT_DIR$/src/token.h">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="51">
-              <caret line="3" column="103" lean-forward="true" selection-start-line="3" selection-end-line="3" selection-end-column="103" />
+              <caret line="3" column="103" selection-start-line="3" selection-end-line="3" selection-end-column="103" />
             </state>
           </provider>
         </entry>
@@ -141,7 +154,7 @@
         <entry file="file://$PROJECT_DIR$/src/montador.h">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="166">
-              <caret line="23" column="26" lean-forward="true" selection-start-line="23" selection-start-column="26" selection-end-line="23" selection-end-column="26" />
+              <caret line="23" column="26" selection-start-line="23" selection-start-column="26" selection-end-line="23" selection-end-column="26" />
             </state>
           </provider>
         </entry>
@@ -159,36 +172,36 @@
   </component>
   <component name="FindInProjectRecents">
     <findStrings>
-      <find>== Decimal</find>
-      <find>encontraDAf</find>
-      <find>encontraDef</find>
-      <find>sizeof</find>
-      <find>NULL</find>
-      <find>%03x</find>
-      <find>numsym</find>
-      <find>nu</find>
-      <find>log</find>
-      <find>logErroGrama</find>
-      <find>&gt;</find>
-      <find>+= 1</find>
-      <find>*numLinha</find>
-      <find>define</find>
-      <find>.SET</find>
-      <find>linhaAtual[0][0]</find>
-      <find>tamS</find>
-      <find>malloc(12</find>
-      <find>%010</find>
-      <find>JUMP</find>
-      <find>sprintf</find>
-      <find>1023</find>
-      <find>J+</find>
-      <find>'w'</find>
       <find>printf</find>
       <find>alocaLi</find>
       <find>.ALIG</find>
       <find>.ORG</find>
-      <find>.WORD</find>
       <find>deveArma</find>
+      <find>lX</find>
+      <find>L</find>
+      <find>Hexadec</find>
+      <find>LX</find>
+      <find>.WORD</find>
+      <find>trataDire</find>
+      <find>define</find>
+      <find>usado</find>
+      <find>wfill</find>
+      <find>usado mas</find>
+      <find>swit</find>
+      <find>.WFILL</find>
+      <find>if</find>
+      <find>linhaAtual = aloca</find>
+      <find>LD</find>
+      <find>linhaNaoZer</find>
+      <find>storal</find>
+      <find>J+</find>
+      <find>saida[</find>
+      <find>sprint</find>
+      <find>strc</find>
+      <find>strcpy</find>
+      <find>[</find>
+      <find>malloc</find>
+      <find>trataDir</find>
     </findStrings>
   </component>
   <component name="Git.Settings">
@@ -280,7 +293,7 @@
         <option name="com.jetbrains.cidr.execution.CidrBuildBeforeRunTaskProvider$BuildBeforeRunTask" enabled="true" />
       </method>
     </configuration>
-    <configuration name="montador_ias" type="CMakeRunConfiguration" factoryName="Application" PROGRAM_PARAMS="../testes/arq18.in" PASS_PARENT_ENVS_2="true" PROJECT_NAME="montador_ias" TARGET_NAME="montador_ias" CONFIG_NAME="Debug" RUN_TARGET_PROJECT_NAME="montador_ias" RUN_TARGET_NAME="montador_ias">
+    <configuration name="montador_ias" type="CMakeRunConfiguration" factoryName="Application" PROGRAM_PARAMS="../testes/arq23.in" PASS_PARENT_ENVS_2="true" PROJECT_NAME="montador_ias" TARGET_NAME="montador_ias" CONFIG_NAME="Debug" RUN_TARGET_PROJECT_NAME="montador_ias" RUN_TARGET_NAME="montador_ias">
       <method v="2">
         <option name="com.jetbrains.cidr.execution.CidrBuildBeforeRunTaskProvider$BuildBeforeRunTask" enabled="true" />
       </method>
@@ -310,12 +323,12 @@
       <workItem from="1538343994407" duration="13597000" />
       <workItem from="1538596508167" duration="4150000" />
       <workItem from="1539204304657" duration="9359000" />
-      <workItem from="1539295601053" duration="8901000" />
+      <workItem from="1539295601053" duration="15258000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="59086000" />
+    <option name="totallyTimeSpent" value="65443000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="0" y="22" width="1280" height="778" extended-state="6" />
@@ -326,17 +339,17 @@
       <window_info id="Favorites" order="2" side_tool="true" />
       <window_info anchor="bottom" id="Message" order="0" />
       <window_info anchor="bottom" id="Find" order="1" />
-      <window_info anchor="bottom" id="Run" order="2" weight="0.32876712" />
-      <window_info anchor="bottom" id="Debug" order="3" weight="0.4" />
+      <window_info anchor="bottom" id="Run" order="2" weight="0.32798833" />
+      <window_info anchor="bottom" id="Debug" order="3" weight="0.39941692" />
       <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
       <window_info anchor="bottom" id="TODO" order="6" />
       <window_info anchor="bottom" id="Database Changes" order="7" show_stripe_button="false" />
-      <window_info active="true" anchor="bottom" id="Terminal" order="8" visible="true" weight="0.2026239" />
+      <window_info active="true" anchor="bottom" id="Terminal" order="8" visible="true" weight="0.212828" />
       <window_info anchor="bottom" id="Event Log" order="9" side_tool="true" />
       <window_info anchor="bottom" id="Version Control" order="10" show_stripe_button="false" />
       <window_info anchor="bottom" id="CMake" order="11" weight="0.29178083" />
-      <window_info anchor="bottom" id="Messages" order="12" weight="0.32876712" />
+      <window_info anchor="bottom" id="Messages" order="12" weight="0.3265306" />
       <window_info anchor="right" id="Commander" internal_type="SLIDING" order="0" type="SLIDING" weight="0.4" />
       <window_info anchor="right" id="Ant Build" order="1" weight="0.25" />
       <window_info anchor="right" content_ui="combo" id="Hierarchy" order="2" weight="0.25" />
@@ -349,50 +362,82 @@
   <component name="VcsContentAnnotationSettings">
     <option name="myLimit" value="2678400000" />
   </component>
+  <component name="XDebuggerManager">
+    <watches-manager>
+      <configuration name="CMakeRunConfiguration">
+        <watch expression="linhaAtual[0]" language="ObjectiveC" />
+        <watch expression="linhaAtual[1]" language="ObjectiveC" />
+        <watch expression="linhaAtual[2]" language="ObjectiveC" />
+        <watch expression="linhaAtual[3]" language="ObjectiveC" />
+      </configuration>
+    </watches-manager>
+  </component>
   <component name="debuggerHistoryManager">
+    <expressions id="watch">
+      <expression>
+        <expression-string>linhaAtual[3]</expression-string>
+        <language-id>ObjectiveC</language-id>
+        <evaluation-mode>EXPRESSION</evaluation-mode>
+      </expression>
+      <expression>
+        <expression-string>linhaAtual[2]</expression-string>
+        <language-id>ObjectiveC</language-id>
+        <evaluation-mode>EXPRESSION</evaluation-mode>
+      </expression>
+      <expression>
+        <expression-string>linhaAtual[1]</expression-string>
+        <language-id>ObjectiveC</language-id>
+        <evaluation-mode>EXPRESSION</evaluation-mode>
+      </expression>
+      <expression>
+        <expression-string>linhaAtual[0]</expression-string>
+        <language-id>ObjectiveC</language-id>
+        <evaluation-mode>EXPRESSION</evaluation-mode>
+      </expression>
+    </expressions>
     <expressions id="evaluateExpression">
       <expression>
+        <expression-string>i</expression-string>
+        <language-id>ObjectiveC</language-id>
+        <evaluation-mode>EXPRESSION</evaluation-mode>
+      </expression>
+      <expression>
+        <expression-string>strtol(prox.palavra, NULL, 10)</expression-string>
+        <language-id>ObjectiveC</language-id>
+        <evaluation-mode>EXPRESSION</evaluation-mode>
+      </expression>
+      <expression>
+        <expression-string>linhaAtual[3]</expression-string>
+        <language-id>ObjectiveC</language-id>
+        <evaluation-mode>EXPRESSION</evaluation-mode>
+      </expression>
+      <expression>
+        <expression-string>linhaAtual[4]</expression-string>
+        <language-id>ObjectiveC</language-id>
+        <evaluation-mode>EXPRESSION</evaluation-mode>
+      </expression>
+      <expression>
+        <expression-string>linhaAtual[2]</expression-string>
+        <language-id>ObjectiveC</language-id>
+        <evaluation-mode>EXPRESSION</evaluation-mode>
+      </expression>
+      <expression>
+        <expression-string>linhaAtual[1]</expression-string>
+        <language-id>ObjectiveC</language-id>
+        <evaluation-mode>EXPRESSION</evaluation-mode>
+      </expression>
+      <expression>
+        <expression-string>linhaAtual[0]</expression-string>
+        <language-id>ObjectiveC</language-id>
+        <evaluation-mode>EXPRESSION</evaluation-mode>
+      </expression>
+      <expression>
+        <expression-string>strtol(prox.palavra, NULL, 16)</expression-string>
+        <language-id>ObjectiveC</language-id>
+        <evaluation-mode>EXPRESSION</evaluation-mode>
+      </expression>
+      <expression>
         <expression-string>strcmp(maiuscula, &quot;.WFILL &quot;)</expression-string>
-        <language-id>ObjectiveC</language-id>
-        <evaluation-mode>EXPRESSION</evaluation-mode>
-      </expression>
-      <expression>
-        <expression-string>maiuscula</expression-string>
-        <language-id>ObjectiveC</language-id>
-        <evaluation-mode>EXPRESSION</evaluation-mode>
-      </expression>
-      <expression>
-        <expression-string>getNumberOfTokens()</expression-string>
-        <language-id>ObjectiveC</language-id>
-        <evaluation-mode>EXPRESSION</evaluation-mode>
-      </expression>
-      <expression>
-        <expression-string>(palavra + (char)strlen(palavra))</expression-string>
-        <language-id>ObjectiveC</language-id>
-        <evaluation-mode>EXPRESSION</evaluation-mode>
-      </expression>
-      <expression>
-        <expression-string>palavra + (char)strlen(palavra)</expression-string>
-        <language-id>ObjectiveC</language-id>
-        <evaluation-mode>EXPRESSION</evaluation-mode>
-      </expression>
-      <expression>
-        <expression-string>(char)strlen(palavra)</expression-string>
-        <language-id>ObjectiveC</language-id>
-        <evaluation-mode>EXPRESSION</evaluation-mode>
-      </expression>
-      <expression>
-        <expression-string>((char)strlen(palavra) + palavra)</expression-string>
-        <language-id>ObjectiveC</language-id>
-        <evaluation-mode>EXPRESSION</evaluation-mode>
-      </expression>
-      <expression>
-        <expression-string>(size_t) (strlen(palavra) + palavra)</expression-string>
-        <language-id>ObjectiveC</language-id>
-        <evaluation-mode>EXPRESSION</evaluation-mode>
-      </expression>
-      <expression>
-        <expression-string>strlen(palavra) + palavra</expression-string>
         <language-id>ObjectiveC</language-id>
         <evaluation-mode>EXPRESSION</evaluation-mode>
       </expression>
@@ -457,21 +502,7 @@
     <entry file="file://$PROJECT_DIR$/src/token.h">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="51">
-          <caret line="3" column="103" lean-forward="true" selection-start-line="3" selection-end-line="3" selection-end-column="103" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/processarEntrada.c">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="221">
-          <caret line="372" column="11" selection-start-line="372" selection-start-column="5" selection-end-line="372" selection-end-column="11" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main.c">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="224">
-          <caret line="36" column="17" selection-start-line="36" selection-start-column="17" selection-end-line="36" selection-end-column="17" />
+          <caret line="3" column="103" selection-start-line="3" selection-end-line="3" selection-end-column="103" />
         </state>
       </provider>
     </entry>
@@ -485,15 +516,28 @@
     <entry file="file://$PROJECT_DIR$/src/montador.h">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="166">
-          <caret line="23" column="26" lean-forward="true" selection-start-line="23" selection-start-column="26" selection-end-line="23" selection-end-column="26" />
+          <caret line="23" column="26" selection-start-line="23" selection-start-column="26" selection-end-line="23" selection-end-column="26" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main.c">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="245">
+          <caret line="37" selection-start-line="37" selection-end-line="37" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/processarEntrada.c">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="6273">
+          <caret line="372" column="11" selection-start-line="372" selection-start-column="5" selection-end-line="372" selection-end-column="11" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/emitirMapaDeMemoria.c">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="465">
-          <caret line="34" column="17" selection-start-line="34" selection-start-column="17" selection-end-line="34" selection-end-column="17" />
-          <caret line="318" column="17" selection-start-line="318" selection-start-column="17" selection-end-line="318" selection-end-column="17" />
+        <state relative-caret-position="340">
+          <caret line="180" column="44" selection-start-line="180" selection-start-column="44" selection-end-line="180" selection-end-column="44" />
           <folding>
             <element signature="e#0#21#0" expanded="true" />
           </folding>

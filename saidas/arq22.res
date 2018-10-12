@@ -1,73 +1,40 @@
-Lista de tokens
-Token 0
-	Tipo: 1001 (Diretiva)
-	Palavra: ".set"
-	Linha: 1
-Token 1
-	Tipo: 1005 (Nome)
-	Palavra: "hex"
-	Linha: 1
-Token 2
-	Tipo: 1003 (Hexadecimal)
-	Palavra: "0x64"
-	Linha: 1
-Token 3
-	Tipo: 1001 (Diretiva)
-	Palavra: ".set"
-	Linha: 2
-Token 4
-	Tipo: 1005 (Nome)
-	Palavra: "dec"
-	Linha: 2
-Token 5
-	Tipo: 1004 (Decimal)
-	Palavra: "100"
-	Linha: 2
-Token 6
-	Tipo: 1001 (Diretiva)
-	Palavra: ".org"
-	Linha: 4
-Token 7
-	Tipo: 1003 (Hexadecimal)
-	Palavra: "0x000"
-	Linha: 4
-Token 8
-	Tipo: 1002 (Definicao Rotulo)
-	Palavra: "vetor1:"
-	Linha: 5
-Token 9
-	Tipo: 1001 (Diretiva)
-	Palavra: ".wfill"
-	Linha: 6
-Token 10
-	Tipo: 1004 (Decimal)
-	Palavra: "20"
-	Linha: 6
-Token 11
-	Tipo: 1005 (Nome)
-	Palavra: "hex"
-	Linha: 6
-Token 12
-	Tipo: 1001 (Diretiva)
-	Palavra: ".align"
-	Linha: 7
-Token 13
-	Tipo: 1004 (Decimal)
-	Palavra: "32"
-	Linha: 7
-Token 14
-	Tipo: 1002 (Definicao Rotulo)
-	Palavra: "vetor2:"
-	Linha: 8
-Token 15
-	Tipo: 1001 (Diretiva)
-	Palavra: ".wfill"
-	Linha: 9
-Token 16
-	Tipo: 1004 (Decimal)
-	Palavra: "20"
-	Linha: 9
-Token 17
-	Tipo: 1005 (Nome)
-	Palavra: "dec"
-	Linha: 9
+000 00 000 00 064
+001 00 000 00 064
+002 00 000 00 064
+003 00 000 00 064
+004 00 000 00 064
+005 00 000 00 064
+006 00 000 00 064
+007 00 000 00 064
+008 00 000 00 064
+009 00 000 00 064
+00A 00 000 00 064
+00B 00 000 00 064
+00C 00 000 00 064
+00D 00 000 00 064
+00E 00 000 00 064
+00F 00 000 00 064
+010 00 000 00 064
+011 00 000 00 064
+012 00 000 00 064
+013 00 000 00 064
+020 00 000 00 064
+021 00 000 00 064
+022 00 000 00 064
+023 00 000 00 064
+024 00 000 00 064
+025 00 000 00 064
+026 00 000 00 064
+027 00 000 00 064
+028 00 000 00 064
+029 00 000 00 064
+02A 00 000 00 064
+02B 00 000 00 064
+02C 00 000 00 064
+02D 00 000 00 064
+02E 00 000 00 064
+02F 00 000 00 064
+030 00 000 00 064
+031 00 000 00 064
+032 00 000 00 064
+033 00 000 00 064

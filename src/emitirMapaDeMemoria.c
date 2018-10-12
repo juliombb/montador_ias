@@ -6,22 +6,23 @@
 #define ESQ 0
 #define DIR 2
 
-#define PADRAO_NOME "n%02x"
-#define PADRAO_WORD "w%02x"
+#define PADRAO_NOME "n%02X"
+#define PADRAO_WORD "w%02X"
 
-typedef enum TipoSimbolo {Simbolo, Rotulo} TipoSimbolo;
+typedef enum TipoNome {Simbolo, Rotulo} TipoNome;
 typedef struct DescNome {
     char* nome;
     char definido; // 0 se foi definido ou 1 se não
     unsigned char align;
-    TipoSimbolo tipo;
+    TipoNome tipo;
     unsigned valor;
 } DescNome;
 
+int linhaNaoZerada(char **linhaAtual);
 void adicionaInstrucao(char **linhaAtual, unsigned char align, const char *maiuscula);
 unsigned adicionaOuEncontra(DescNome** nomes, unsigned* qtosNomes, char* simbolo);
 int define(DescNome** nomes, unsigned* qtosNomes,
-           char* simbolo, unsigned valor, unsigned char align, TipoSimbolo tipo);
+           char* nome, unsigned valor, unsigned char align, TipoNome tipo);
 
 int preencheSeNecessario(char **linhaAtual, unsigned char align, DescNome** nomes, unsigned qtosNomes);
 
@@ -32,41 +33,42 @@ int trataInstrucao(
 
 int trataDiretiva(
         DescNome **nomes, unsigned *qtosNomes,
-        unsigned char *align, char **linhaAtual,
+        unsigned char *align, char ***linhaAtual,
         unsigned *pos, Token *atual, unsigned *numLinhaAtual,
-        char ***saida);
+        char ***saida, unsigned* ordemDasLinhas, unsigned* proximaLinhaDaOrdem);
 
 
 char **alocaLinha();
 
 /*
-    ---- Voce deve implementar essa função para a Parte 2! ----
-    Utilize os tokens da estrutura de tokens
     Retorna:
         *  1 caso haja erro na montagem;
         *  0 caso não haja erro.
  */
 int emitirMapaDeMemoria()
 {
-    unsigned palavraMemoriaAtual = 0;
+    unsigned* ordemDasLinhas = (unsigned*) malloc(1024* sizeof(unsigned));
+    unsigned proximaLinhaDaOrdem = 0;
+    // vetor que armazena cada linha em uma posicao
+    // para printar ordenado e o teste passar :P
+
     char*** saida = (char***) malloc(1024* sizeof(char**));
-    // vetor de vetor de strings. Cada linha do vetor é um vetor de 4 strings, se preenchida
-    for (int i = 0; i < 1024; ++i) {
-        saida[i] = NULL;
-    }
+    // matriz cujo indice vertical eh o end de
+    // e as 4 colunas compoem a linha
 
     DescNome** nomes = (DescNome**) malloc(1024* sizeof(DescNome*));
     unsigned qtosNomes = 0;
-
-    // tabelinha
+    // vetor que armazena os nomes
 
     unsigned char align = ESQ;
+    // representacao do alinhamento
 
-    char** linhaAtual = NULL; // minha IDE me enche o saco se eu não fizer isso
+    char** linhaAtual = NULL; // minha IDE me enche o saco se eu nao fizer isso
     unsigned numLinhaAtual = 0;
+    // linhaAtual eh a linha processada
 
     for (unsigned pos = 0; pos < getNumberOfTokens(); pos++) {
-        if (align == ESQ) {
+        if (!linhaAtual) {
             linhaAtual = alocaLinha();
         }
 
@@ -79,8 +81,9 @@ int emitirMapaDeMemoria()
                 break;
             }
             case Diretiva: {
-                if (trataDiretiva(nomes, &qtosNomes, &align, linhaAtual,
-                                  &pos, &atual, &numLinhaAtual, saida)) {
+                if (trataDiretiva(nomes, &qtosNomes, &align, &linhaAtual,
+                                  &pos, &atual, &numLinhaAtual, saida,
+                                  ordemDasLinhas, &proximaLinhaDaOrdem)) {
                     return 1;
                 }
                 continue;
@@ -91,16 +94,22 @@ int emitirMapaDeMemoria()
                 }
                 continue;
             }
-            // Os outros casos devem ter sido tratados ja
+            // Os outros casos ja foram tratados
         }
 
         if (align == ESQ) {
             align = DIR;
         } else {
             align = ESQ;
+            ordemDasLinhas[proximaLinhaDaOrdem++] = numLinhaAtual;
             saida[numLinhaAtual] = linhaAtual;
+            linhaAtual = alocaLinha();
             numLinhaAtual++;
         }
+    }
+
+    if (linhaNaoZerada(linhaAtual)) {
+        saida[numLinhaAtual] = linhaAtual;
     }
 
     // segunda sondagem
@@ -129,7 +138,7 @@ int emitirMapaDeMemoria()
 
             // preenchendo a palavra (no caso de ser word)
             char *palavra = (char*) malloc(11* sizeof(char));
-            sprintf(palavra, "%010x", desc->valor);
+            sprintf(palavra, "%010X", desc->valor);
 
             for (size_t charAt = 9; charAt > 6; --charAt) {
                 linhaAtual[3][charAt - 7] = palavra[charAt];
@@ -143,7 +152,7 @@ int emitirMapaDeMemoria()
                 linhaAtual[1][charAt - 2] = palavra[charAt];
             }
 
-            for (size_t charAt = 1; charAt >= 0; --charAt) {
+            for (int charAt = 1; charAt >= 0; --charAt) {
                 linhaAtual[0][charAt] = palavra[charAt];
             }
 
@@ -159,15 +168,17 @@ int emitirMapaDeMemoria()
         }
     }
 
-    for (numLinhaAtual = 0; numLinhaAtual < 1024; ++numLinhaAtual) {
-        linhaAtual = saida[numLinhaAtual];
+    // ultima sondagem
+    // imprime todos
+    for (numLinhaAtual = 0; numLinhaAtual < proximaLinhaDaOrdem; ++numLinhaAtual) {
+        linhaAtual = saida[ordemDasLinhas[numLinhaAtual]];
 
-        if (linhaAtual == NULL) {
+        if (!linhaAtual) {
             continue;
         }
 
-        printf("%03x %s %s %s %s",
-                numLinhaAtual, linhaAtual[0], linhaAtual[1], linhaAtual[2], linhaAtual[3]);
+        printf("%03X %s %s %s %s\n",
+               ordemDasLinhas[numLinhaAtual], linhaAtual[0], linhaAtual[1], linhaAtual[2], linhaAtual[3]);
     }
 
     return 0;
@@ -176,13 +187,13 @@ int emitirMapaDeMemoria()
 char **alocaLinha() {
     char **linhaAtual = (char**) malloc(4 * sizeof(char*)); // 4 strings
 
-    linhaAtual[0] = (char*) malloc(2* sizeof(char)); // inst 1
+    linhaAtual[0] = (char*) malloc(3* sizeof(char)); // inst 1
     strcpy(linhaAtual[0], "00");
-    linhaAtual[1] = (char*) malloc(3* sizeof(char)); // end 1
+    linhaAtual[1] = (char*) malloc(4* sizeof(char)); // end 1
     strcpy(linhaAtual[1], "000");
-    linhaAtual[2] = (char*) malloc(2* sizeof(char)); // inst 2
+    linhaAtual[2] = (char*) malloc(3* sizeof(char)); // inst 2
     strcpy(linhaAtual[2], "00");
-    linhaAtual[3] = (char*) malloc(3* sizeof(char)); // end 2
+    linhaAtual[3] = (char*) malloc(4* sizeof(char)); // end 2
     strcpy(linhaAtual[3], "000");
 
     return linhaAtual;
@@ -217,7 +228,8 @@ int trataInstrucao(
                      return 1;
                  }
 
-                 sprintf(linhaAtual[align + 1], "%03x", strtol(prox.palavra, NULL, 16));
+                 sprintf(linhaAtual[align + 1], "%03lX", strtol(prox.palavra, NULL, 16));
+                 break;
              }
              case Decimal: {
                  long num = strtol(prox.palavra, NULL, 10);
@@ -226,11 +238,13 @@ int trataInstrucao(
                      return 1;
                  }
 
-                 sprintf(linhaAtual[align + 1], "%03x", num);
+                 sprintf(linhaAtual[align + 1], "%03lX", num);
+                 break;
              }
              case Nome: {
                  unsigned numsym = adicionaOuEncontra(nomes, qtosNomes, prox.palavra);
                  sprintf(linhaAtual[align + 1], PADRAO_NOME, numsym);
+                 break;
              }
              // não deve haver outro caso
          }
@@ -267,10 +281,10 @@ void adicionaInstrucao(char **linhaAtual, unsigned char align, const char *maius
         strcpy(linhaAtual[align], "JM"); // alias p/ mudar dps
     }
     if (strcmp(maiuscula, "JUMPL") == 0) {
-        strcpy(linhaAtual[align], "J+"); // alias p/ mudar dps
+        strcpy(linhaAtual[align], "0F"); // alias p/ mudar dps
     }
     if (strcmp(maiuscula, "JUMPR") == 0) {
-        strcpy(linhaAtual[align], "J+");
+        strcpy(linhaAtual[align], "10");
     }
     if (strcmp(maiuscula, "ADD") == 0) {
         strcpy(linhaAtual[align], "05");
@@ -291,14 +305,14 @@ void adicionaInstrucao(char **linhaAtual, unsigned char align, const char *maius
         strcpy(linhaAtual[align], "0C");
     }
     if (strcmp(maiuscula, "STORAL") == 0) {
-        strcpy(linhaAtual[align], "ST");
+        strcpy(linhaAtual[align], "12");
     }
     if (strcmp(maiuscula, "STORAR") == 0) {
-        strcpy(linhaAtual[align], "ST");
+        strcpy(linhaAtual[align], "13");
     }
 }
 
-int deveArmazenarAntesDeTrocar(char **linhaAtual, unsigned int pos) {
+int linhaNaoZerada(char **linhaAtual) {
     // essa funcao nos diz se devemos ter uma
     // linha armazenada quando uma diretiva for trocá-la
 
@@ -317,11 +331,13 @@ int trataDiretiva(
         DescNome **nomes,
         unsigned int *qtosNomes,
         unsigned char *align,
-        char **linhaAtual,
+        char ***linhaAtual,
         unsigned int *pos,
         Token *atual,
         unsigned *numLinhaAtual,
-        char ***saida
+        char ***saida,
+        unsigned* ordemDasLinhas,
+        unsigned* proximaLinhaDaOrdem
 ) {
 
     char* maiuscula = paraMaiuscula((*atual).palavra);
@@ -343,15 +359,18 @@ int trataDiretiva(
             // sabemos que não será outro
         }
 
-        if (deveArmazenarAntesDeTrocar(linhaAtual, (*pos - 1))) {
-            saida[*numLinhaAtual] = linhaAtual;
+        if (linhaNaoZerada(*linhaAtual)) {
+            ordemDasLinhas[*proximaLinhaDaOrdem] = *numLinhaAtual;
+            (*proximaLinhaDaOrdem) += 1;
+            saida[*numLinhaAtual] = *linhaAtual;
         } else {
-            free(linhaAtual);
+            free(*linhaAtual);
         }
 
+        *linhaAtual = alocaLinha();
         (*numLinhaAtual) = num;
         (*align) = ESQ;
-        return (*numLinhaAtual <= 1023);
+        return (*numLinhaAtual > 1023);
     }
 
     if (strcmp(maiuscula, ".ALIGN") == 0) {
@@ -362,18 +381,21 @@ int trataDiretiva(
             return 0;
         }
 
-        if (deveArmazenarAntesDeTrocar(linhaAtual, (*pos - 1))) {
-            saida[*numLinhaAtual] = linhaAtual;
+        if (linhaNaoZerada(*linhaAtual)) {
+            ordemDasLinhas[*proximaLinhaDaOrdem] = *numLinhaAtual;
+            (*proximaLinhaDaOrdem) += 1;
+            saida[*numLinhaAtual] = *linhaAtual;
         } else {
-            free(linhaAtual);
+            free(*linhaAtual);
         }
 
         do {
             (*numLinhaAtual) = (*numLinhaAtual) + 1;
         } while ((*numLinhaAtual) % num != 0);
 
+        *linhaAtual = alocaLinha();
         (*align) = ESQ;
-        return (*numLinhaAtual <= 1023);
+        return (*numLinhaAtual > 1023);
     }
 
     if (strcmp(maiuscula, ".WFILL") == 0) {
@@ -393,88 +415,97 @@ int trataDiretiva(
                 // se o hexa nao esta preenchido, preenchemos
                 if (ultimo < 11) {
                     palavra = (char*) malloc(13* sizeof(char));
-                    sprintf(palavra, "0x%010x", strtol(valor.palavra, NULL, 16));
+                    sprintf(palavra, "0x%010lX", strtol(valor.palavra, NULL, 16));
                 }
 
                 // prox.palavra eh o numero de linhas
                 for (int i = 0; i < strtol(prox.palavra, NULL, 10); ++i) {
                     // preenchendo a linha
                     for (size_t charAt = 11; charAt > 8; --charAt) {
-                        linhaAtual[3][charAt-9] = palavra[charAt];
+                        (*linhaAtual)[3][charAt-9] = palavra[charAt];
                     }
 
                     for (size_t charAt = 8; charAt > 6; --charAt) {
-                        linhaAtual[2][charAt-7] = palavra[charAt];
+                        (*linhaAtual)[2][charAt-7] = palavra[charAt];
                     }
 
                     for (size_t charAt = 6; charAt > 3; --charAt) {
-                        linhaAtual[1][charAt-4] = palavra[charAt];
+                        (*linhaAtual)[1][charAt-4] = palavra[charAt];
                     }
 
                     for (size_t charAt = 3; charAt > 1; --charAt) {
-                        linhaAtual[0][charAt-2] = palavra[charAt];
+                        (*linhaAtual)[0][charAt-2] = palavra[charAt];
                     }
 
-                    saida[*numLinhaAtual] = linhaAtual;
+                    ordemDasLinhas[*proximaLinhaDaOrdem] = *numLinhaAtual;
+                    (*proximaLinhaDaOrdem) += 1;
+                    saida[*numLinhaAtual] = *linhaAtual;
                     (*numLinhaAtual) += 1;
+                    *linhaAtual = alocaLinha();
 
                     if ((*numLinhaAtual) > 1023) {
                         return 1;
                     }
-
-                    linhaAtual = alocaLinha();
                 }
-                break;
+
+                return (*numLinhaAtual) > 1023;
             }
             case Decimal: {
                 long argVal = strtol(valor.palavra, NULL, 10);
-                char* palavra = (char*) malloc(10* sizeof(char));
-                sprintf(palavra, "%010x", argVal);
+                char* palavra = (char*) malloc(11* sizeof(char));
+                sprintf(palavra, "%010lX", argVal);
 
                 for (int i = 0; i < strtol(prox.palavra, NULL, 10); ++i) {
                     // preenchendo a linha
                     for (size_t charAt = 9; charAt > 6; --charAt) {
-                        linhaAtual[3][charAt - 7] = palavra[charAt];
+                        (*linhaAtual)[3][charAt - 7] = palavra[charAt];
                     }
 
                     for (size_t charAt = 6; charAt > 4; --charAt) {
-                        linhaAtual[2][charAt - 5] = palavra[charAt];
+                        (*linhaAtual)[2][charAt - 5] = palavra[charAt];
                     }
 
                     for (size_t charAt = 4; charAt > 1; --charAt) {
-                        linhaAtual[1][charAt - 2] = palavra[charAt];
+                        (*linhaAtual)[1][charAt - 2] = palavra[charAt];
                     }
 
-                    for (size_t charAt = 1; charAt >= 0; --charAt) {
-                        linhaAtual[0][charAt] = palavra[charAt];
+                    for (int charAt = 1; charAt >= 0; --charAt) {
+                        (*linhaAtual)[0][charAt] = palavra[charAt];
                     }
-                    saida[*numLinhaAtual] = linhaAtual;
+
+                    ordemDasLinhas[*proximaLinhaDaOrdem] = *numLinhaAtual;
+                    (*proximaLinhaDaOrdem) += 1;
+                    saida[*numLinhaAtual] = *linhaAtual;
                     (*numLinhaAtual) += 1;
+                    *linhaAtual = alocaLinha();
 
                     if ((*numLinhaAtual) > 1023) {
                         return 1;
                     }
-
-                    linhaAtual = alocaLinha();
                 }
-                break;
+
+                return (*numLinhaAtual) > 1023;
             }
             case Nome: {
-                unsigned numsym = adicionaOuEncontra(nomes, qtosNomes, prox.palavra);
+                unsigned numsym = adicionaOuEncontra(nomes, qtosNomes, valor.palavra);
                 for (int i = 0; i < strtol(prox.palavra, NULL, 10); ++i) {
-                    linhaAtual[0][0] = 'w';
-                    sprintf(linhaAtual[3], PADRAO_WORD, numsym);
+                    (*linhaAtual)[0][0] = 'w';
+                    sprintf((*linhaAtual)[3], PADRAO_WORD, numsym);
                     // w000000w12 é uma word que deve ser preenchida com o nome 12
 
-                    saida[*numLinhaAtual] = linhaAtual;
+                    ordemDasLinhas[*proximaLinhaDaOrdem] = *numLinhaAtual;
+                    (*proximaLinhaDaOrdem) += 1;
+                    saida[*numLinhaAtual] = *linhaAtual;
                     (*numLinhaAtual) += 1;
 
                     if ((*numLinhaAtual) > 1023) {
                         return 1;
                     }
 
-                    linhaAtual = alocaLinha();
+                    *linhaAtual = alocaLinha();
                 }
+
+                return (*numLinhaAtual) > 1023;
             }
         }
 
@@ -494,60 +525,64 @@ int trataDiretiva(
                 // se o hexa nao esta preenchido, preenchemos
                 if (ultimo < 11) {
                     palavra = (char*) malloc(13* sizeof(char));
-                    sprintf(palavra, "0x%010x", strtol(prox.palavra, NULL, 16));
+                    sprintf(palavra, "0x%010lX", strtol(prox.palavra, NULL, 16));
                 }
 
                 // preenchendo a linha
                 for (size_t charAt = 11; charAt > 8; --charAt) {
-                    linhaAtual[3][charAt-9] = palavra[charAt];
+                    (*linhaAtual)[3][charAt-9] = palavra[charAt];
                 }
 
                 for (size_t charAt = 8; charAt > 6; --charAt) {
-                    linhaAtual[2][charAt-7] = palavra[charAt];
+                    (*linhaAtual)[2][charAt-7] = palavra[charAt];
                 }
 
                 for (size_t charAt = 6; charAt > 3; --charAt) {
-                    linhaAtual[1][charAt-4] = palavra[charAt];
+                    (*linhaAtual)[1][charAt-4] = palavra[charAt];
                 }
 
                 for (size_t charAt = 3; charAt > 1; --charAt) {
-                    linhaAtual[0][charAt-2] = palavra[charAt];
+                    (*linhaAtual)[0][charAt-2] = palavra[charAt];
                 }
                 break;
             }
             case Decimal: {
                 long argVal = strtol(prox.palavra, NULL, 10);
-                char* palavra = (char*) malloc(10* sizeof(char));
-                sprintf(palavra, "%010x", argVal);
+                char* palavra = (char*) malloc(11* sizeof(char));
+                sprintf(palavra, "%010lX", argVal);
 
                 // preenchendo a linha
                 for (size_t charAt = 9; charAt > 6; --charAt) {
-                    linhaAtual[3][charAt - 7] = palavra[charAt];
+                    (*linhaAtual)[3][charAt - 7] = palavra[charAt];
                 }
 
                 for (size_t charAt = 6; charAt > 4; --charAt) {
-                    linhaAtual[2][charAt - 5] = palavra[charAt];
+                    (*linhaAtual)[2][charAt - 5] = palavra[charAt];
                 }
 
                 for (size_t charAt = 4; charAt > 1; --charAt) {
-                    linhaAtual[1][charAt - 2] = palavra[charAt];
+                    (*linhaAtual)[1][charAt - 2] = palavra[charAt];
                 }
 
-                for (size_t charAt = 1; charAt >= 0; --charAt) {
-                    linhaAtual[0][charAt] = palavra[charAt];
+                for (int charAt = 1; charAt >= 0; --charAt) {
+                    (*linhaAtual)[0][charAt] = palavra[charAt];
                 }
                 break;
             }
             case Nome: {
-                linhaAtual[0][0] = 'w';
+                (*linhaAtual)[0][0] = 'w';
                 unsigned numsym = adicionaOuEncontra(nomes, qtosNomes, prox.palavra);
-                sprintf(linhaAtual[3], PADRAO_WORD, numsym);
+                sprintf((*linhaAtual)[3], PADRAO_WORD, numsym);
+                break;
             }
         }
 
-        saida[*numLinhaAtual] = linhaAtual;
+        ordemDasLinhas[*proximaLinhaDaOrdem] = *numLinhaAtual;
+        (*proximaLinhaDaOrdem) += 1;
+        saida[*numLinhaAtual] = *linhaAtual;
+        *linhaAtual = alocaLinha();
         (*numLinhaAtual) += 1;
-        return (*numLinhaAtual) <= 1023;
+        return (*numLinhaAtual) > 1023;
     }
 
     if (strcmp(maiuscula, ".SET") == 0) {
@@ -565,8 +600,6 @@ int trataDiretiva(
             }
             // sabemos que não será outro
         }
-
-        (*numLinhaAtual) = (*numLinhaAtual) + 1;
 
         return define(nomes, qtosNomes, prox.palavra, argVal, ESQ, Simbolo);
     }
@@ -591,8 +624,26 @@ unsigned adicionaOuEncontra(DescNome** nomes, unsigned* qtosNomes, char* simbolo
 }
 
 int define(DescNome** nomes, unsigned* qtosNomes,
-           char* simbolo, unsigned valor, unsigned char align, TipoSimbolo tipo) {
-    unsigned pos = adicionaOuEncontra(nomes, qtosNomes, simbolo);
+           char* nome, unsigned valor, unsigned char align, TipoNome tipo) {
+    unsigned pos;
+
+    switch (tipo) {
+
+        case Simbolo: {
+            pos = adicionaOuEncontra(nomes, qtosNomes, nome);
+            break;
+        }
+        case Rotulo: {
+            char* nomeReal = (char*) malloc(strlen(nome) * sizeof(char));
+            for (unsigned char i = 0; i < strlen(nome)-1; ++i) {
+                nomeReal[i] = nome[i];
+            }
+            nomeReal[strlen(nome) - 1] = '\0';
+            pos = adicionaOuEncontra(nomes, qtosNomes, nomeReal);
+            break;
+        }
+    }
+
     DescNome* desc = nomes[pos];
 
     if (desc->definido) {
@@ -609,9 +660,7 @@ int define(DescNome** nomes, unsigned* qtosNomes,
 }
 
 int preencheSeNecessario(char** linhaAtual, unsigned char align, DescNome** nomes, unsigned qtosNomes) {
-    if (strcmp(linhaAtual[align], "JM") == 0
-        || strcmp(linhaAtual[align], "J+") == 0
-        || strcmp(linhaAtual[align], "ST") == 0) {
+    if (strcmp(linhaAtual[align], "JM") == 0) {
 
         unsigned pos;
         sscanf(linhaAtual[align+1], PADRAO_NOME, &pos);
@@ -632,18 +681,16 @@ int preencheSeNecessario(char** linhaAtual, unsigned char align, DescNome** nome
             return 1;
         }
 
-        sprintf(linhaAtual[align+1], "%03x", desc->valor);
+        sprintf(linhaAtual[align+1], "%03X", desc->valor);
 
-        if (strcmp(linhaAtual[align], "JM") == 0) {
-            if (desc->align == ESQ) {
-                strcpy(linhaAtual[align], "0D");
-            } else {
-                // desc->align = DIR
-                strcpy(linhaAtual[align], "0E");
-            }
+        if (desc->align == ESQ) {
+            strcpy(linhaAtual[align], "0D");
+        } else {
+            // desc->align = DIR
+            strcpy(linhaAtual[align], "0E");
         }
 
-        else if (strcmp(linhaAtual[align], "J+") == 0) {
+        /*else if (strcmp(linhaAtual[align], "J+") == 0) {
             if (desc->align == ESQ) {
                 strcpy(linhaAtual[align], "0F");
             } else {
@@ -659,7 +706,7 @@ int preencheSeNecessario(char** linhaAtual, unsigned char align, DescNome** nome
                 // desc->align = DIR
                 strcpy(linhaAtual[align], "13");
             }
-        }
+        } */
     }
 
     if (linhaAtual[align+1][0] == 'n') {
@@ -684,7 +731,7 @@ int preencheSeNecessario(char** linhaAtual, unsigned char align, DescNome** nome
             return 1;
         }
 
-        sprintf(linhaAtual[align+1], "%03x", desc->valor);
+        sprintf(linhaAtual[align+1], "%03X", desc->valor);
     }
 
     return 0;
