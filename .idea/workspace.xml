@@ -11,28 +11,7 @@
     </configurations>
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="96fff3ac-3932-4180-a115-089df153f49a" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/bin/montador.x" beforeDir="false" afterPath="$PROJECT_DIR$/bin/montador.x" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/montador_ias.dir/C.includecache" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/montador_ias.dir/C.includecache" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/montador_ias.dir/src/auxMontador.c.o" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/montador_ias.dir/src/auxMontador.c.o" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/montador_ias.dir/src/emitirMapaDeMemoria.c.o" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/montador_ias.dir/src/emitirMapaDeMemoria.c.o" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/montador_ias.dir/src/main.c.o" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/montador_ias.dir/src/main.c.o" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/montador_ias.dir/src/processarEntrada.c.o" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/montador_ias.dir/src/processarEntrada.c.o" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/montador_ias.dir/src/token.c.o" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/montador_ias.dir/src/token.c.o" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/cmake-build-debug/montador_ias" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/montador_ias" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/saidas/arq00.res" beforeDir="false" afterPath="$PROJECT_DIR$/saidas/arq00.res" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/saidas/arq09.res" beforeDir="false" afterPath="$PROJECT_DIR$/saidas/arq09.res" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/saidas/arq16.res" beforeDir="false" afterPath="$PROJECT_DIR$/saidas/arq16.res" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/saidas/arq17.res" beforeDir="false" afterPath="$PROJECT_DIR$/saidas/arq17.res" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/saidas/arq18.res" beforeDir="false" afterPath="$PROJECT_DIR$/saidas/arq18.res" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/saidas/arq19.res" beforeDir="false" afterPath="$PROJECT_DIR$/saidas/arq19.res" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/saidas/arq20.res" beforeDir="false" afterPath="$PROJECT_DIR$/saidas/arq20.res" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/saidas/arq21.res" beforeDir="false" afterPath="$PROJECT_DIR$/saidas/arq21.res" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/saidas/arq22.res" beforeDir="false" afterPath="$PROJECT_DIR$/saidas/arq22.res" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/saidas/arq23.res" beforeDir="false" afterPath="$PROJECT_DIR$/saidas/arq23.res" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/emitirMapaDeMemoria.c" beforeDir="false" afterPath="$PROJECT_DIR$/src/emitirMapaDeMemoria.c" afterDir="false" />
-    </list>
+    <list default="true" id="96fff3ac-3932-4180-a115-089df153f49a" name="Default Changelist" comment="" />
     <ignored path="$PROJECT_DIR$/cmake-build-debug/" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -45,7 +24,7 @@
     <session id="1634165206">
       <usages-collector id="statistics.lifecycle.project">
         <counts>
-          <entry key="project.closed" value="10" />
+          <entry key="project.closed" value="11" />
           <entry key="project.open.time.1" value="1" />
           <entry key="project.open.time.10" value="2" />
           <entry key="project.open.time.11" value="1" />
@@ -103,8 +82,8 @@
       <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/emitirMapaDeMemoria.c">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="340">
-              <caret line="180" column="44" selection-start-line="180" selection-start-column="44" selection-end-line="180" selection-end-column="44" />
+            <state relative-caret-position="1111">
+              <caret line="286" column="40" lean-forward="true" selection-start-line="286" selection-start-column="40" selection-end-line="286" selection-end-column="40" />
               <folding>
                 <element signature="e#0#21#0" expanded="true" />
               </folding>
@@ -172,8 +151,6 @@
   </component>
   <component name="FindInProjectRecents">
     <findStrings>
-      <find>printf</find>
-      <find>alocaLi</find>
       <find>.ALIG</find>
       <find>.ORG</find>
       <find>deveArma</find>
@@ -202,6 +179,8 @@
       <find>[</find>
       <find>malloc</find>
       <find>trataDir</find>
+      <find>JM</find>
+      <find>0F</find>
     </findStrings>
   </component>
   <component name="Git.Settings">
@@ -323,16 +302,15 @@
       <workItem from="1538343994407" duration="13597000" />
       <workItem from="1538596508167" duration="4150000" />
       <workItem from="1539204304657" duration="9359000" />
-      <workItem from="1539295601053" duration="15258000" />
+      <workItem from="1539295601053" duration="15972000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="65443000" />
+    <option name="totallyTimeSpent" value="66157000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="0" y="22" width="1280" height="778" extended-state="6" />
-    <editor active="true" />
     <layout>
       <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.25444266" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
@@ -345,7 +323,7 @@
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
       <window_info anchor="bottom" id="TODO" order="6" />
       <window_info anchor="bottom" id="Database Changes" order="7" show_stripe_button="false" />
-      <window_info active="true" anchor="bottom" id="Terminal" order="8" visible="true" weight="0.212828" />
+      <window_info active="true" anchor="bottom" id="Terminal" order="8" visible="true" weight="0.46938777" />
       <window_info anchor="bottom" id="Event Log" order="9" side_tool="true" />
       <window_info anchor="bottom" id="Version Control" order="10" show_stripe_button="false" />
       <window_info anchor="bottom" id="CMake" order="11" weight="0.29178083" />
@@ -536,8 +514,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/emitirMapaDeMemoria.c">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="340">
-          <caret line="180" column="44" selection-start-line="180" selection-start-column="44" selection-end-line="180" selection-end-column="44" />
+        <state relative-caret-position="1111">
+          <caret line="286" column="40" lean-forward="true" selection-start-line="286" selection-start-column="40" selection-end-line="286" selection-end-column="40" />
           <folding>
             <element signature="e#0#21#0" expanded="true" />
           </folding>
